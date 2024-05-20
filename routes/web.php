@@ -81,10 +81,6 @@ Route::prefix('mypage')
         Route::get('sold-items', [ProfileController::class, 'getSoldItems'])
             ->name('mypage.sold-items');
 
-        // プロフィール編集フォーム表示
-        Route::get('edit-profile', [ProfileController::class, 'edit'])
-            ->name('mypage.edit');
-
         // プロフィール更新
         Route::post('edit-profile', [ProfileController::class, 'update'])
             ->name('mypage.edit');
