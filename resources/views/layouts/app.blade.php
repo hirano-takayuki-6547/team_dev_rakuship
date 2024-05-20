@@ -17,7 +17,12 @@
         <ul class="navbar-nav">
             <li class="nav-item"><a href="#">TEST</a></li>
             <li class="nav-item"><a href="#">TEST</a></li>
-            <li class="nav-item"><a href="{{ route('logout') }}">Logout</a></li>
+            <li class="nav-item">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
             <li class="nav-item">
                 <select class="dropdown" onchange="location = this.value;">
                     <option value="#" disabled selected>Menu</option>
