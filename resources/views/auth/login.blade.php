@@ -17,7 +17,7 @@
                 <input type="password" name="password" placeholder="Password">
                 <input type="submit" value="ログイン">
         <a href="{{ route('register') }}" id="signup-link">会員登録</a>
-        <a href="#" id="signup-link">戻る</a>
+        <a href="{{ route('items.index') }}" id="signup-link">戻る</a>
     </div>
 </body>
 </html>
