@@ -3,7 +3,7 @@
 @section('content')
 
 <div id="search-category">
-    <select class="category" onchange="location = this.value;">
+    <select class="category" >
         <option value="#" disabled selected>カテゴリー</option>
         <option value="#">カテゴリー1</option>
         <option value="#">カテゴリー2</option>
@@ -17,5 +17,9 @@
         </form>
     </div>
 </div>
+
+<h1>
+    商品一覧
+</h1>
 
 @endsection
