@@ -88,5 +88,6 @@ class ItemController extends Controller
     {
         $item->delete();
         return redirect(route('items.index'));
+
     }
 }
