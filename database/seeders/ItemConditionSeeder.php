@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ItemSeeder extends Seeder
+class ItemConditionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,7 +22,7 @@ class ItemSeeder extends Seeder
             ['name' => '傷や汚れあり'],
             ['name' => '全体的に状態が悪い']
         ];
-        \DB::table('Items')->insert($data);
+        \DB::table('item_conditions')->insert($data);
         /**仮で入れているので変更してください */
     }
 }
