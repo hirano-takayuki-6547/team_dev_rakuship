@@ -10,7 +10,8 @@
         "laravel/fortify": "^1.19",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "payjp/payjp-php": "^1.6"
     },
     "require-dev": {
         "askdkc/breezejp": "^1.8",
