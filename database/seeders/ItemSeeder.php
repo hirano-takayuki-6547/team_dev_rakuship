@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ItemSeeder extends Seeder
 {
@@ -69,6 +70,6 @@ class ItemSeeder extends Seeder
             ['name'=>'ヘルメット'],
             [ 'name' => "ワンピース"],
         ];
-        \DB::table('items')->insert($item);
+        DB::table('items')->insert($item);
     }
 }
