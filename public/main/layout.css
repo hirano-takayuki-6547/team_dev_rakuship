@@ -19,6 +19,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    top: 0;
+    width: 100%;
+    position: sticky;
 }
 
 .navbar-brand a {
@@ -50,7 +53,7 @@ body {
 }
 
 .nav-item a:hover, .nav-item select:hover {
-    background-color: cyan;
+    background-color: #ded9ca;
 }
 
 .dropdown {
@@ -66,12 +69,54 @@ body {
     color: #333;
 }
 
-#serach-category{
+
+#search-category {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    padding-bottom: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.search-box {
     display: flex;
     align-items: center;
 }
 
-.category {
-    width: 140px;
-    margin-right: 20px;
+.search-box form {
+    display: flex;
+    align-items: center;
+}
+
+.search-txt {
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-btn {
+    padding: 5px 10px;
+    margin-left: 5px;
+    border: none;
+    background-color: #ded9ca;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #ded9ca;
 }

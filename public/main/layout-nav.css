@@ -45,7 +45,8 @@ body {
 }
 
 .nav-item a:hover, .nav-item select:hover {
-    background-color: cyan;
+    background-color: #ded9ca;
+
 }
 
 .dropdown {
