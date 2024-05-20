@@ -14,19 +14,44 @@
                 <img src="/main/images/logo.png" alt="MyWebsite Logo">
             </a>
         </div>
+        @if(Auth::user())
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="#">TEST</a></li>
-            <li class="nav-item"><a href="#">TEST</a></li>
-            <li class="nav-item"><a href="{{ route('logout') }}">Logout</a></li>
+            <li class="nav-item"><a href="#" onclick="logout()">ログアウト</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="post">
+                    @csrf
+                </form>
+                <script>
+                    function logout() {
+                        event.preventDefault();
+                        if (window.confirm('ログアウトしますか？')) {
+                            document.getElementById('logout-form').submit();
+                        }
+                    }
+                </script>
+            </li>
             <li class="nav-item">
                 <select class="dropdown" onchange="location = this.value;">
-                    <option value="#" disabled selected>Menu</option>
-                    <option value="{{ route('login') }}">ログイン</option>
+                    <option value="#" disabled selected>メニュー</option>
                     <option value="{{ route('items.index') }}">商品一覧</option>
+                    <option value="#">出品登録</option>
                     <option value="#">マイページ</option>
                 </select>
             </li>
         </ul>
+        @else
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="{{ route('login') }}">ログイン</a></li>
+            <li class="nav-item"><a href="{{ route('register') }}">新規登録</a></li>
+            <li class="nav-item">
+                <select class="dropdown" onchange="location = this.value;">
+                    <option value="#" disabled selected>メニュー</option>
+                    <option value="{{ route('items.index') }}">商品一覧</option>
+                    <option value="#">出品登録</option>
+                    <option value="#">マイページ</option>
+                </select>
+            </li>
+        </ul>
+        @endif
     </nav>
 </header>
 
