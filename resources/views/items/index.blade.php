@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="serach-category">
+<div id="search-category">
     <select class="category" onchange="location = this.value;">
         <option value="#" disabled selected>カテゴリー</option>
         <option value="#">カテゴリー1</option>
