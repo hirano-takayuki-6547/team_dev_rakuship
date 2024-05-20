@@ -29,34 +29,35 @@ Route::get('/items/{item}', [ItemController::class, 'index'])
     ->name('items.show');
 
 // 商品一覧と詳細以外
-Route::middleware('auth')
+Route::prefix('items')
+    ->middleware('auth')
     ->group(function () {
         // 商品購入フォーム表示
-        Route::get('items/{item}/buy', [ItemController::class, 'showBuyForm'])
+        Route::get('{item}/buy', [ItemController::class, 'showBuyForm'])
             ->name('show.buy.form');
 
         // 商品購入
-        Route::post('items/{item}/buy', [ItemController::class, 'buyItem'])
+        Route::post('{item}/buy', [ItemController::class, 'buyItem'])
             ->name('item.buy');
 
         // 商品出品フォーム表示
-        Route::get('items/sell', [ItemController::class, 'showSellForm'])
+        Route::get('sell', [ItemController::class, 'showSellForm'])
             ->name('item.sell');
 
         // 商品出品
-        Route::post('items/sell', [ItemController::class, 'sellItem'])
+        Route::post('sell', [ItemController::class, 'sellItem'])
             ->name('item.sell');
 
         // 出品した商品削除
-        Route::post('items/{item}', [ItemController::class, 'destroy'])
+        Route::post('{item}', [ItemController::class, 'destroy'])
             ->name('item.destroy');
 
         // 出品した商品編集フォーム表示
-        Route::get('items/{item}/edit', [ItemController::class, 'edit'])
+        Route::get('{item}/edit', [ItemController::class, 'edit'])
             ->name('item.edit');
 
         // 出品した商品更新
-        Route::post('items/{item}/edit', [ItemController::class, 'update'])
+        Route::post('{item}/edit', [ItemController::class, 'update'])
             ->name('item.edit');
     });
 
