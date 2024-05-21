@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/main/layout.css">
+    @vite(['resources/js/app.js'])
     <title>{{ config('app.name') }}</title>
 </head>
 <header>
