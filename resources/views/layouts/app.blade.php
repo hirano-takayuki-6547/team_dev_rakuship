@@ -32,9 +32,9 @@
             <li class="nav-item">
                 <select class="dropdown" onchange="location = this.value;">
                     <option value="#" disabled selected>メニュー</option>
-                    <option value=""><a href="{{ route('items.index') }}">商品一覧</a></option>
-                    <option value=""><a href="#">出品登録</a></option>
-                    <option value=""><a href="{{ route('mypage.index') }}">マイページ</a></option>
+                    <option value="{{ route('items.index') }}">商品一覧</option>
+                    <option value="#">出品登録</option>
+                    <option value="{{ route('mypage.index') }}">マイページ</option>
                 </select>
             </li>
         </ul>
@@ -45,9 +45,9 @@
             <li class="nav-item">
                 <select class="dropdown" onchange="location = this.value;">
                     <option value="" disabled selected>メニュー</option>
-                    <option value=""><a href="{{ route('items.index') }}">商品一覧</a></option>
+                    <option value="{{ route('items.index') }}">商品一覧</option>
                     <option value="">出品登録</option>
-                    <option value=""><a href="{{ route('mypage.index') }}">マイページ</a></option>
+                    <option value="{{ route('login') }}">マイページ</option>
                 </select>
             </li>
         </ul>
