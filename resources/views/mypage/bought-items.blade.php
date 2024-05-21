@@ -1,5 +1,4 @@
 @extends('layouts.side')
-
 @section('content-mypage')
         <h1>注文情報</h1>
         <table border="1">
