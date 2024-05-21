@@ -3,7 +3,7 @@
 @section('content')
 <h1>商品出品</h1>
 
-<form action="{{route('items.sell')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('item.sell')}}" method="post" enctype="multipart/form-data">
    @csrf
    <dl>
      <dt>商品名<dt>

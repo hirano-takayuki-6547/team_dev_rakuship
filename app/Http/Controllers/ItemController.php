@@ -13,6 +13,12 @@ use Intervention\Image\ImageManager;
 
 class ItemController extends Controller
 {
+
+    public function showSellForm()
+    {
+        $categories = Category::orderBy('id')->get();
+        return view('items.create', compact('categories'));
+    }
     public function index(Request $request)
     {
         // query 生成
@@ -29,7 +35,9 @@ class ItemController extends Controller
         // Item 取得
         $items = $query->get();
 
-        return view('items.index', ['items' => $items]);
+        $categories = Category::orderBy('id')->get();
+
+        return view('items.index', ['items' => $items, 'categories' => $categories]);
     }
 
     public function create()
@@ -66,11 +74,7 @@ class ItemController extends Controller
         return redirect(route('items.index'));
     }
 
-    public function showSellForm()
-    {
-        $categories = Category::orderBy('id')->get();
-        return view('items.create', compact('categories'));
-    }
+
 
     // 商品購入
     public function buyItem()
