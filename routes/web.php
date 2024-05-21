@@ -27,13 +27,14 @@ Route::prefix('items')
         Route::post('{item}/buy', [ItemController::class, 'buyItem'])
             ->name('item.buy');
 
+        // 商品出品
+        Route::post('sell', [ItemController::class, 'sellItem'])
+            ->name('item.sell');
+
         // 商品出品フォーム表示
         Route::get('sell', [ItemController::class, 'showSellForm'])
             ->name('item.showSellForm');
 
-        // 商品出品
-        Route::post('sell', [ItemController::class, 'sellItem'])
-            ->name('item.sell');
 
         // 出品した商品削除
         Route::post('{item}', [ItemController::class, 'destroy'])
