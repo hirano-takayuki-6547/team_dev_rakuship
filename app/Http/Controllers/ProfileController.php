@@ -40,33 +40,33 @@ class ProfileController extends Controller
     }
 
     // いいねした商品一覧表示
-    private function getLikedItems()
+    public function getLikedItems()
     {
         $user = Auth::user();
 
         $items = $user->likedItems()->orderBy('id', 'desc')->get();
 
-        return view('mypage.liked-items');
+        return view('mypage.liked-items', compact('items'));
     }
 
     // 購入した商品一覧表示
-    private function getBoughtItems()
+    public function getBoughtItems()
     {
         $user = Auth::user();
 
         $items = $user->boughtItems()->orderBy('id', 'desc')->get();
 
-        return view('mypage.bought-items');
+        return view('mypage.bought-items', compact('items'));
     }
 
     // 出品した商品一覧の表示
-    private function getSoldItems()
+    public function getSoldItems()
     {
         $user = Auth::user();
 
         $items = $user->soldItems()->orderBy('id', 'desc')->get();
 
-        return view('mypage.sold-items');
+        return view('mypage.sold-items', compact('items'));
     }
 
     // 退会処理
