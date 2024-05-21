@@ -33,10 +33,10 @@ class ItemController extends Controller
         }
 
         // Item 取得
-        $items = $query->get();
+        $items = $query->paginate(6);
 
         $categories = Category::orderBy('id')->get();
-
+        // dd($items);
         return view('items.index', ['items' => $items, 'categories' => $categories]);
     }
 

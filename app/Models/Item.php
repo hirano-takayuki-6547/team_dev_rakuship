@@ -24,7 +24,7 @@ class Item extends Model
     }
 
     // categoriesとのリレーション(多対一)
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }

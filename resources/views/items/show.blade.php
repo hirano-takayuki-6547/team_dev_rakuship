@@ -26,21 +26,21 @@
             }
         </script>
     @else
-        @if (Auth::user()->isLike($item->id)) {
+        @if (Auth::user()->isLike($item->id))
             <form action="{{ route('likes.destroy') }}" method="post" novalidate>
              @csrf
-             <input type="hidden" name="book_id" value="{{ $book->id }}">
+             @method('delete')
+             <input type="hidden" name="item_id" value="{{ $item->id }}">
              <button type="submit">いいね解除</button>
             </form>
         @else
             <form action="{{ route('likes.store') }}" method="post" novalidate>
                 @csrf
-                <input type="hidden" name="book_id" value="{{ $book->id }}">
-                <button type="submit">お気に入り登録</button>
+                <input type="hidden" name="item_id" value="{{ $item->id }}">
+                <button type="submit">いいね登録</button>
             </form>
         @endif
     @endif
-    }
 </p>
 
 @endsection
