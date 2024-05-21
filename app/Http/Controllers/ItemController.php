@@ -37,7 +37,6 @@ class ItemController extends Controller
         $items = $query->paginate(6);
 
         $categories = Category::orderBy('id')->get();
-        // dd($items);
         return view('items.index', ['items' => $items, 'categories' => $categories]);
     }
 
@@ -48,7 +47,6 @@ class ItemController extends Controller
 
     public function sellItem(Request $request)
     {
-
         $user = Auth::user();
 
         $img_src = $this->saveItemImg($request->file('img_src'));

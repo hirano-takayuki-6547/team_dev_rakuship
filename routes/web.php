@@ -27,6 +27,10 @@ Route::prefix('items')
         Route::post('{item}/buy', [ItemController::class, 'buyItem'])
             ->name('item.buy');
 
+        // 商品出品フォーム表示
+        Route::get('sell', [ItemController::class, 'showSellForm'])
+            ->name('item.showSellForm');
+
         // 商品出品
         Route::post('sell', [ItemController::class, 'sellItem'])
             ->name('item.sell');
@@ -53,6 +57,7 @@ Route::prefix('items')
 Route::get('/', [ItemController::class, 'index'])
     ->name('items.index');
 Route::get('/items/{item}', [ItemController::class, 'show'])
+
     ->name('items.show');
 
 

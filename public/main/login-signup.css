@@ -59,6 +59,13 @@ form > input[type="submit"] {
     margin-top: 20px;
 }
 
+form > input[type="submit"]:hover {
+    background-color: #292929;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
 #signup-link, #login-link {
     color: #333;
     text-decoration: none;
