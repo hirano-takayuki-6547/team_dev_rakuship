@@ -27,7 +27,7 @@
         </figure> -->
     </div>
     <div class="card__body">
-        <p class="card__description">ごく普通の生地の白いTシャツに油性マジックで「正義」と書いただけの架空の半袖Tシャツです。</p>
+        <p class="card__description">{{ $item->description }}</p>
         <p class="card__category">{{ $item->category->name }}</p>
         <p class="card__price">{{ $item->name}}</p>
     </div>
