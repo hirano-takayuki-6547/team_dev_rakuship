@@ -1,7 +1,7 @@
 @extends('layouts.side')
 
 @section('content-mypage')
-<h1>お気に入り一覧</h1>
+<h3>お気に入り一覧</h3>
 <table border="1">
     <thead>
         <tr><th>ID</th><th>商品名</th><th>注文日</th></tr>
@@ -20,4 +20,3 @@
 </table>
 
 @endsection
-
