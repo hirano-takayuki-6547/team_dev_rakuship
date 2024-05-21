@@ -39,7 +39,8 @@ class ItemController extends Controller
     public function sellItem(Request $request, User $user)
     {
         // validate
-        $this->validate($request,
+        $this->validate(
+            $request,
             [
                 'category_id' => 'required',
                 'name' => 'required',
@@ -64,9 +65,15 @@ class ItemController extends Controller
         return redirect(route('items.index'));
     }
 
-    // 商品購入
-    public function buyItem() {
+    public function showSellForm()
+    {
+        $categories = Category::orderBy('id')->get();
+        return view('items.create', compact('categories'));
+    }
 
+    // 商品購入
+    public function buyItem()
+    {
     }
 
     public function show(Item $item)
@@ -91,7 +98,8 @@ class ItemController extends Controller
     {
         $this->authorize($item);
         // varidate(storeと同じにしてます)
-        $this->validate($request,
+        $this->validate(
+            $request,
             [
                 'category_id' => 'required',
                 'name' => 'required|max:255',
@@ -102,14 +110,12 @@ class ItemController extends Controller
 
         $item->update($request->all());
         return redirect(route('items.show', ['item' => $item]));
-
     }
 
     public function destroy(Item $item)
     {
         $item->delete();
         return redirect(route('items.index'));
-
     }
 
     // 一時ファイルの作成
