@@ -5,9 +5,9 @@
 <div id="search-category">
     <select class="category" >
         <option value="#" disabled selected>カテゴリー</option>
-        <option value="#">カテゴリー1</option>
-        <option value="#">カテゴリー2</option>
-        <option value="#">カテゴリー3</option>
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
     </select>
 
     <div class="search-box">

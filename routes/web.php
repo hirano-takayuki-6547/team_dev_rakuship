@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
-use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +15,6 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-// 商品一覧と商品詳細（ログインなしで作成）
-Route::get('/', [ItemController::class, 'index'])
-    ->name('items.index');
-Route::get('/items/{item}', [ItemController::class, 'index'])
-    ->name('items.show');
-
 // 商品一覧と詳細以外
 Route::prefix('items')
     ->middleware('auth')
@@ -42,7 +29,7 @@ Route::prefix('items')
 
         // 商品出品フォーム表示
         Route::get('sell', [ItemController::class, 'showSellForm'])
-            ->name('item.sell');
+            ->name('item.showSellForm');
 
         // 商品出品
         Route::post('sell', [ItemController::class, 'sellItem'])
@@ -60,6 +47,13 @@ Route::prefix('items')
         Route::post('{item}/edit', [ItemController::class, 'update'])
             ->name('item.edit');
     });
+
+// 商品一覧と商品詳細（ログインなしで作成）
+Route::get('/', [ItemController::class, 'index'])
+    ->name('items.index');
+Route::get('/items/{item}', [ItemController::class, 'index'])
+    ->name('items.show');
+
 
 // マイページ
 Route::prefix('mypage')
