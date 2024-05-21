@@ -9,6 +9,14 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'category_id',
+        'name',
+        'img_src',
+        'description',
+        'price',
+    ];
+
     // usersとのリレーション(多対一)
     public function user()
     {
