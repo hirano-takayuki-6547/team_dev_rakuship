@@ -63,7 +63,15 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
-        return view('items.edit', ['item' => $item]);
+        $categories = Category::all();
+
+        return view(
+            'items.edit',
+            [
+                'item' => $item,
+                'categories' => $categories,
+            ]
+        );
     }
 
     public function update(Request $request, Item $item)
