@@ -47,7 +47,6 @@ body {
 
 .main-content {
     flex-grow: 1;
-    display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -57,6 +56,16 @@ body {
 .profile-wrapper {
     max-width: 600px;
     width: 100%;
+    /* justify-content: center; */
+    margin: 0 auto;
+    flex-grow: 1;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.center {
+
 }
 
 .profile-wrapper h1 {
@@ -104,6 +113,7 @@ textarea {
 
 button {
     margin-top: 10px;
+    margin-left: 185px;
     padding: 8px 25px;
     background-color: #000;
     color: #fff;
