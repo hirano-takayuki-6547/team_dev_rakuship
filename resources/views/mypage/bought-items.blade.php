@@ -1,4 +1,6 @@
+@extends('layouts.side')
 
+@section('content-mypage')
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -24,3 +26,5 @@
         </table>
 </body>
 </html>
+
+@endsection
