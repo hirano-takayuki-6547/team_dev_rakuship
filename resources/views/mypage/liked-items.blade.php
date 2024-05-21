@@ -21,4 +21,3 @@
 
 @endsection
 
-@endsection
