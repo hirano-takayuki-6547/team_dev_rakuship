@@ -11,8 +11,8 @@
     </select>
 
     <div class="search-box">
-        <form action="#" method="get">
-          <input class="search-txt" type="text" placeholder="検索したいことを入力">
+        <form action="{{ route('items.index') }}" method="post">
+          <input class="search-txt" type="text" name="keyword" value="" placeholder="検索したいことを入力">
           <button class="search-btn" type="submit">検索</button>
         </form>
     </div>
