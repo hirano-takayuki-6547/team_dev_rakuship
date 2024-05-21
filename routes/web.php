@@ -35,6 +35,11 @@ Route::prefix('items')
         Route::post('sell', [ItemController::class, 'sellItem'])
             ->name('item.sell');
 
+        // 商品出品フォーム表示
+        Route::get('sell', [ItemController::class, 'showSellForm'])
+            ->name('item.showSellForm');
+
+
         // 出品した商品削除
         Route::post('{item}', [ItemController::class, 'destroy'])
             ->name('item.destroy');
@@ -51,7 +56,8 @@ Route::prefix('items')
 // 商品一覧と商品詳細（ログインなしで作成）
 Route::get('/', [ItemController::class, 'index'])
     ->name('items.index');
-Route::get('/items/{item}', [ItemController::class, 'index'])
+Route::get('/items/{item}', [ItemController::class, 'show'])
+
     ->name('items.show');
 
 
@@ -90,5 +96,5 @@ Route::post('likes/', [LikeController::class, 'store'])
     ->name('likes.store');
 
 // いいね削除
-Route::post('likes/', [LikeController::class, 'destroy'])
+Route::delete('likes/', [LikeController::class, 'destroy'])
     ->name('likes.destroy');

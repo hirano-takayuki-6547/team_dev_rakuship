@@ -16,9 +16,13 @@
                 <label for="discription">自己紹介</label>
                 <textarea id="discription" name="discription">{{ $user->description }}</textarea>
 
-                <button type="submit">プロフィール更新</button>
-            </form>
+                    <label for="discription">自己紹介</label>
+                    <textarea id="discription" name="discription">{{ $user->description }}</textarea>
+
+                    <button type="submit">プロフィール更新</button>
+                </form>
+            </div>
         </div>
-    </div>
+</div>
 
 @endsection

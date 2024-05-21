@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Item;
-use App\Models\User;
 use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
+
 
 class ItemController extends Controller
 {
@@ -33,10 +34,9 @@ class ItemController extends Controller
         }
 
         // Item 取得
-        $items = $query->get();
+        $items = $query->paginate(6);
 
         $categories = Category::orderBy('id')->get();
-
         return view('items.index', ['items' => $items, 'categories' => $categories]);
     }
 
@@ -45,33 +45,35 @@ class ItemController extends Controller
         return view('items.store');
     }
 
-    public function sellItem(Request $request, User $user)
+    public function sellItem(Request $request)
     {
-        // validate
+        $user = Auth::user();
+
+        $img_src = $this->saveItemImg($request->file('img_src'));
+
         $this->validate(
             $request,
             [
-                'category_id' => 'required',
+                'category' => 'required',
                 'name' => 'required',
                 'description' => 'required',
-                'price' => 'required|min:1',
+                'price' => 'required',
+                'img_src' => 'required|image|file'
             ]
         );
 
         // 商品画像取得
-        $img_src = $this->saveItemImg($request->file('img_src'));
 
-        // fillable分かんないので一旦これで。
         $item = new Item;
         $item->seller_id = $user->id;
-        $item->category_id = $request->category_id;
+        $item->category_id = $request->category;
         $item->name = $request->name;
         $item->img_src = $img_src;
         $item->description = $request->description;
         $item->price = $request->price;
 
         $item->save();
-        return redirect(route('items.index'));
+        return redirect()->back()->with('status', '商品を出品しました');
     }
 
 
