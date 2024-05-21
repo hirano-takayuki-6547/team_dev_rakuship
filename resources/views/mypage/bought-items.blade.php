@@ -1,15 +1,7 @@
 @extends('layouts.side')
 
 @section('content-mypage')
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAKUSHIP</title>
-</head>
-<body>
-        <h3>注文情報</h3>
+        <h1>注文情報</h1>
         <table border="1">
             <thead>
                 <tr><th>ID</th><th>商品名</th><th>注文日</th></tr>
@@ -24,7 +16,5 @@
                 @endforeach
             </tbody>
         </table>
-</body>
-</html>
 
-@endsection
+@endsection('content-mypage')
