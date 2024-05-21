@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/main/layout.css">
+    @vite(['resources/js/app.js'])
     <title>{{ config('app.name') }}</title>
 </head>
 <header>
@@ -31,9 +32,9 @@
             </li>
             <li class="nav-item">
                 <select class="dropdown" onchange="location = this.value;">
-                    <option value="#" disabled selected>メニュー</option>
+                    <option value="" disabled selected>メニュー</option>
                     <option value="{{ route('items.index') }}">商品一覧</option>
-                    <option value="#">出品登録</option>
+                    <option value="{{ route('item.sell') }}">出品登録</option>
                     <option value="{{ route('mypage.index') }}">マイページ</option>
                 </select>
             </li>
@@ -46,8 +47,8 @@
                 <select class="dropdown" onchange="location = this.value;">
                     <option value="" disabled selected>メニュー</option>
                     <option value="{{ route('items.index') }}">商品一覧</option>
-                    <option value="">出品登録</option>
-                    <option value="{{ route('login') }}">マイページ</option>
+                    <option value="{{ route('item.showSellForm') }}">出品登録</option>
+                    <option value="{{ route('mypage.index') }}">マイページ</option>
                 </select>
             </li>
         </ul>
