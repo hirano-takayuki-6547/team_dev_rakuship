@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -14,7 +15,7 @@
             <tbody>
                 @foreach($items as $item)
                     <tr>
-                        <td>{{ $item->category_id }}</td>
+                        <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->bought_at }}</td>
                     </tr>

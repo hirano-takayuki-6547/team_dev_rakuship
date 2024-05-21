@@ -50,8 +50,18 @@ class User extends Authenticatable
     }
 
     // likesとのリレーション(多対多)
-    public function likeItems()
+    public function likedItems()
     {
         return $this->belongsToMany(Item::class, 'likes')->withTimeStamps();
+    }
+
+    public function soldItems()
+    {
+        return $this->hasMany(Item::class, 'seller_id');
+    }
+
+    public function boughtItems()
+    {
+        return $this->hasMany(Item::class, 'buyer_id');
     }
 }
