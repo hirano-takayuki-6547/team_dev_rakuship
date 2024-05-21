@@ -1,4 +1,6 @@
 
+@extends('layouts.side')
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
