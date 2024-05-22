@@ -2,23 +2,8 @@
 
 @section('content')
 
-<div id="search-category">
-    <select class="category" >
-        <option value="#" disabled selected>カテゴリー</option>
-        @foreach($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
-        @endforeach
-    </select>
-
-    <div class="search-box">
-        <form action="{{ route('items.index') }}" method="post">
-          <input class="search-txt" type="text" name="keyword" value="" placeholder="検索したいことを入力">
-          <button class="search-btn" type="submit">検索</button>
-        </form>
-    </div>
-</div>
-
 @foreach ($items as $item)
+
 <article class="card">
     <div class="card__header">
         <figure class="card__thumbnail">
@@ -35,7 +20,8 @@
         <p class="card__text"><a href="{{ route('items.show', $item) }}" class="button -compact">{{ $item->name }}の詳細を見る</a></p>
     </div>
     </article>
-    @endforeach
+
+@endforeach
 
 {{ $items->links() }}
 
