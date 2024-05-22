@@ -81,8 +81,8 @@ Route::prefix('mypage')
             ->name('mypage.sold-items');
 
         // プロフィール更新
-        Route::post('edit-profile', [ProfileController::class, 'update'])
-            ->name('mypage.edit');
+        Route::post('update-profile', [ProfileController::class, 'update'])
+            ->name('mypage.update');
 
         // 退会
         Route::post('delete', [ProfileController::class, 'destroy'])

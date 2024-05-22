@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\ItemCondition;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -48,7 +49,8 @@ class ItemController extends Controller
         $items = $query->paginate(6);
 
         $categories = Category::orderBy('id')->get();
-        return view('items.index', ['items' => $items, 'categories' => $categories]);
+        $conditions = ItemCondition::orderBy('id')->get();
+        return view('items.index', ['items' => $items, 'categories' => $categories, 'conditions' => $conditions]);
     }
 
     public function create()
@@ -69,7 +71,7 @@ class ItemController extends Controller
                 'name' => 'required',
                 'description' => 'required',
                 'price' => 'required',
-                'img_src' => 'required|image|file'
+                'img_src' => 'required|image|file|mimes:jpeg,bmp,png,jpg'
             ]
         );
 
@@ -190,7 +192,7 @@ class ItemController extends Controller
             [
                 'category_id' => 'required',
                 'name' => 'required|max:255',
-                'img_src' => 'required|image|file',
+                'img_src' => 'required|image|file|',
                 'description' => 'required',
                 'price' => 'required|min:1',
             ]
