@@ -12,6 +12,7 @@
             <div class="card__body">
                 <p class="card__description">{{ $item->description }}</p>
                 <p class="card__category">{{ $item->category->name }}</p>
+                <p class="card__category">{{ $item->itemCondition->name }}</p>
                 <p class="card__price">{{ $item->name }}</p>
             </div>
             <div class="card__footer">

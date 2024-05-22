@@ -24,8 +24,9 @@ class ItemController extends Controller
 
     public function showSellForm()
     {
+        $conditions = ItemCondition::orderBy('id')->get();
         $categories = Category::orderBy('id')->get();
-        return view('items.create', compact('categories'));
+        return view('items.create', compact('categories', 'conditions'));
     }
 
     public function showBuyForm(Item $item)
@@ -80,6 +81,7 @@ class ItemController extends Controller
         $item = new Item;
         $item->seller_id = $user->id;
         $item->category_id = $request->category;
+        $item->condition_id = $request->condition;
         $item->name = $request->name;
         $item->img_src = $img_src;
         $item->description = $request->description;
@@ -168,8 +170,7 @@ class ItemController extends Controller
     public function show(Item $item)
     {
         $categories = Category::orderBy('id')->get();
-        $conditions = ItemCondition::orderBy('id')->get();
-        return view('items.show', ['item' => $item, 'categories' => $categories, 'conditions' => $conditions]);
+        return view('items.show', ['item' => $item, 'categories' => $categories]);
     }
 
     public function edit(Item $item)
