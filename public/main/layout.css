@@ -123,31 +123,38 @@ body {
 
 /* class container */
 
+/* class items/index.balde card */
 .card {
     background-color: #fff;
     box-shadow: 0 0 8px rgba(0, 0, 0, .16);
     color: #212121;
     text-decoration: none;
-    }
+    width: 500px;
+    /* margin: 0 auto;  */
+}
 
-    .card__header {
-    display: flex;
+.card__header {
+    /* display: flex; */
     flex-wrap: wrap;
-    }
+    margin: 0 auto;
+}
 
 .card__title {
     padding: 1rem 1rem 0;
     font-size: 1.25rem;
     order: 1;
-    }
+}
 
 .card__thumbnail {
+    object-fit: scale-down;
+    width: 450px;
     margin: 0;
     order: 0;
 }
 
 .card__image {
     width: 100%;
+    margin: 0 auto;
 }
 
 .card__body {
