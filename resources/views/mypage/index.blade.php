@@ -1,24 +1,30 @@
 @extends('layouts.side')
 
 @section('content-mypage')
-
     <div class="profile-wrapper">
         <h1>ユーザー情報</h1>
         <h2>ようこそ、{{ $user->name }}さん</h2>
+        @if (session('status'))
+        <div>
+            <span
+                style="color: 2f2b32; background-color: #d1e7dd; border-radius: 8px; padding: 4px 8px;">{{ session('status') }}
+            </span>
+        </div>
+        @endif
         <div class="profile">
-            <form action="{{ route('mypage.index') }}" method="post">
-                <label for="username">ユーザー名</label>
-                <input type="text" id="username" name="username" value="{{ $user->name }}">
+            <form action="{{ route('mypage.update') }}" method="post">
+                @csrf
+                <label for="name">ユーザー名</label>
+                <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}">
 
                 <label for="email">メールアドレス</label>
-                <input type="email" id="email" name="email" value="{{ $user->email }}">
+                <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}">
 
-                <label for="discription">自己紹介</label>
-                <textarea id="discription" name="discription">{{ $user->description }}</textarea>
+                <label for="description">自己紹介</label>
+                <textarea id="description" name="description">{{ old('description', $user->description) }}</textarea>
 
-                    <button type="submit">プロフィール更新</button>
-                </form>
-         </div>
+                <button type="submit">プロフィール更新</button>
+            </form>
+        </div>
     </div>
-
 @endsection
