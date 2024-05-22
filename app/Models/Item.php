@@ -30,12 +30,12 @@ class Item extends Model
     }
 
     // itemConditionsとのリレーション
-    public function itemConditions()
+    public function itemCondition()
     {
-        return $this->belongsTo(ItemCondition::class);
+        return $this->belongsTo(ItemCondition::class, 'condition_id');
     }
 
     public function seller(){
-        return $this->belongsTo(User::class, 'serller_id');
+        return $this->belongsTo(User::class, 'seller_id');
     }
 }
