@@ -123,7 +123,8 @@ body {
 
 /* class container */
 
-/* class items/index.balde card */
+/* class items/index.blade card */
+
 .card {
     background-color: #fff;
     box-shadow: 0 0 8px rgba(0, 0, 0, .16);
@@ -176,4 +177,83 @@ body {
 .card__footer {
     padding: 1rem;
     border-top: 1px solid #ddd;
+}
+
+/* items/create.blade edit form */
+
+.create-h1 {
+    margin-left: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container-create {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.create-form dl {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.create-form dt, .create-form dd {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.create-form dt {
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.create-form input[type="text"],
+.create-form input[type="number"],
+.create-form textarea,
+.create-form select {
+    width: 80%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.create-form textarea {
+    resize: vertical;
+}
+
+.create-form input[type="file"] {
+    display: none;
+}
+
+.image-picker {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+
+/* 버튼 스타일 */
+.create-form button[type="submit"] {
+    width: 20%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-form button[type="submit"]:hover {
+    background-color: #555;
 }
