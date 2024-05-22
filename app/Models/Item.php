@@ -31,6 +31,7 @@ class Item extends Model
     }
 
     // itemConditionとのリレーション
+
     public function itemCondition()
     {
         return $this->belongsTo(ItemCondition::class, 'condition_id');

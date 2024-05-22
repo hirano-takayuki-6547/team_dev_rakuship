@@ -27,7 +27,7 @@ class ProfileController extends Controller
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->description = $request->input('name');
+        $user->description = $request->input('description');
 
         if ($request->has('profile_img')) {
             $filename = $this->saveProfileImg($request->file('profile_img'));

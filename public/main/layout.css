@@ -77,11 +77,18 @@ body {
     padding-bottom: 5px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .category {
-    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.condition {
+    margin-right: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
@@ -99,8 +106,9 @@ body {
 }
 
 .search-txt {
-    padding: 5px;
-    border-radius: 5px 0 0 5px;
+    padding: 10px;
+    margin-right: 5px;
+    border-radius: 5px;
     border: 1px solid #ccc;
     outline: none;
     font-size: 16px;
@@ -108,7 +116,8 @@ body {
 
 .search-btn {
     padding: 5px 10px;
-    margin-left: 5px;
+    margin-left: 10px;
+    margin-right: 5px;
     border: none;
     background-color: #ded9ca;
     color: #fff;

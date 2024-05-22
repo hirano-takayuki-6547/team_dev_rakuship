@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\ItemCondition;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -24,8 +25,9 @@ class ItemController extends Controller
 
     public function showSellForm()
     {
+        $conditions = ItemCondition::orderBy('id')->get();
         $categories = Category::orderBy('id')->get();
-        return view('items.create', compact('categories'));
+        return view('items.create', compact('categories', 'conditions'));
     }
 
     public function showBuyForm(Item $item)
@@ -52,7 +54,9 @@ class ItemController extends Controller
         // dd($items);
 
         $categories = Category::orderBy('id')->get();
-        return view('items.index', ['items' => $items, 'categories' => $categories,]);
+
+        $conditions = ItemCondition::orderBy('id')->get();
+        return view('items.index', ['items' => $items, 'categories' => $categories, 'conditions' => $conditions]);
     }
 
     public function create()
@@ -73,7 +77,7 @@ class ItemController extends Controller
                 'name' => 'required',
                 'description' => 'required',
                 'price' => 'required',
-                'img_src' => 'required|image|file'
+                'img_src' => 'required|image|file|mimes:jpeg,bmp,png,jpg'
             ]
         );
 
@@ -82,6 +86,7 @@ class ItemController extends Controller
         $item = new Item;
         $item->seller_id = $user->id;
         $item->category_id = $request->category;
+        $item->condition_id = $request->condition;
         $item->name = $request->name;
         $item->img_src = $img_src;
         $item->description = $request->description;
@@ -169,7 +174,8 @@ class ItemController extends Controller
 
     public function show(Item $item)
     {
-        return view('items.show', ['item' => $item]);
+        $categories = Category::orderBy('id')->get();
+        return view('items.show', ['item' => $item, 'categories' => $categories]);
     }
 
     public function edit(Item $item)
@@ -194,7 +200,7 @@ class ItemController extends Controller
             [
                 'category_id' => 'required',
                 'name' => 'required|max:255',
-                'img_src' => 'required|image|file',
+                'img_src' => 'required|image|file|',
                 'description' => 'required',
                 'price' => 'required|min:1',
             ]
