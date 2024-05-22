@@ -45,17 +45,7 @@
                 </ul>
             @else
                 <ul class="navbar-nav">
-                    <select class="category">
-                        <option value="#" disabled selected>カテゴリー</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-
-                    <form action="{{ route('items.index') }}" method="post">
-                        <input class="search-txt" type="text" name="keyword" value="" placeholder="検索したいことを入力">
-                        <button class="search-btn" type="submit">検索</button>
-                    </form>
+                    <x-searchBar></x-searchBar>
 
                     <li class="nav-item"><a href="{{ route('login') }}">ログイン</a></li>
                     <li class="nav-item"><a href="{{ route('register') }}">新規登録</a></li>
