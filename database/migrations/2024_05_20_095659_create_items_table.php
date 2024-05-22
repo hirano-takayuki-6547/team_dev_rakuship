@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('seller_id')->index();
             $table->unsignedBigInteger('buyer_id')->nullable()->index();
             $table->unsignedBigInteger('category_id')->index();
+            $table->unsignedBigInteger('condition_id')->index();
             $table->string('name')->nullable(false);
             $table->string('img_src')->nullable();
             $table->text('description')->nullable();
@@ -32,6 +33,8 @@ return new class extends Migration
                 ->on('users');
             $table->foreign('category_id')->references('id')
                 ->on('categories');
+            $table->foreign('condition_id')->references('id')
+                ->on('item_conditions');
 
         });
     }

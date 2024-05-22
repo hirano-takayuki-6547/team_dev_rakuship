@@ -11,7 +11,11 @@
 <body>
     <div class="container">
         <aside class="sidebar">
-            <h1>RakuShip.</h1>
+            <div class="brand-img">
+                <a href="{{ route('items.index') }}">
+                    <img src="/main/images/logo-re.png" alt="MyWebsite Logo">
+                </a>
+            </div>
             <nav>
                 <ul>
                     <li><a href="{{ route('items.index') }}">ホームへ</a></li>
