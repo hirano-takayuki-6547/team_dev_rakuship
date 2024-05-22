@@ -37,7 +37,7 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         // query 生成
-        $query = Item::query();
+        $query = Item::query()->with('category');
 
         if ($request->category_id) {
             $query->where('category_id', $request->category_id);
