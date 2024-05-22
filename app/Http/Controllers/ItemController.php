@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 use Payjp\Charge;
-use App\Models\ItemCondition;
 
 
 class ItemController extends Controller
