@@ -87,6 +87,14 @@ body {
     background-color: #fff;
 }
 
+.condition {
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #fff;
+}
+
 .search-box {
     display: flex;
     align-items: center;
