@@ -139,7 +139,8 @@ body {
     box-shadow: 0 0 8px rgba(0, 0, 0, .16);
     color: #212121;
     text-decoration: none;
-    width: 500px;
+    width: 300px;
+    box-shadow: #333;
     /* margin: 0 auto;  */
 }
 
