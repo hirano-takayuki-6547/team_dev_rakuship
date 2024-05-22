@@ -21,10 +21,10 @@
 @foreach ($items as $item)
 <article class="card">
     <div class="card__header">
-        <h3 class="card__title">{{ $item->name}}</h3>
-        <!-- <figure class="card__thumbnail">
-        <img src="https://shibajuku.net/wp/wp-content/uploads/2020/02/seigiT.jpg" alt="手書きの「正義」という文字が縦に大きくマジックで書かれている白いTシャツ" class="card__image">
-        </figure> -->
+        <figure class="card__thumbnail">
+            <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像" class="card__image">
+        </figure>
+        <h2 class="card__title">{{ $item->name }}</h2>
     </div>
     <div class="card__body">
         <p class="card__description">{{ $item->description }}</p>
@@ -36,4 +36,7 @@
     </div>
     </article>
     @endforeach
+
+{{ $items->links() }}
+
 @endsection
