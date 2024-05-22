@@ -167,7 +167,9 @@ class ItemController extends Controller
 
     public function show(Item $item)
     {
-        return view('items.show', ['item' => $item]);
+        $categories = Category::orderBy('id')->get();
+        $conditions = ItemCondition::orderBy('id')->get();
+        return view('items.show', ['item' => $item, 'categories' => $categories, 'conditions' => $conditions]);
     }
 
     public function edit(Item $item)
