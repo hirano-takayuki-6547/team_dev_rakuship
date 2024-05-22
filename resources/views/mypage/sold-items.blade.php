@@ -11,9 +11,9 @@
         @foreach($items as $item)
 
             <tr>
-                <td>{{ $like->id }}</td>
-                <td>{{ $like->name }}</td>
-                <td>{{ $like->updated_at }}</td>
+                <td>{{ $item->id }}</td>
+                <td>{{ $item->name }}</td>
+                <td>{{ $item->updated_at }}</td>
             </tr>
         @endforeach
     </tbody>
