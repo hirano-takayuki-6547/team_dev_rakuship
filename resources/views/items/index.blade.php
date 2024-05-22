@@ -14,5 +14,5 @@
         </article>
     @endforeach
 
-{{ $items->links(); }}
+{{ $items->links() }}
 @endsection
