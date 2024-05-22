@@ -1,4 +1,4 @@
-@if ($currentUri === '/')
+@if ($currentRouteName === 'items.index')
     <span id="search-category">
         <form action="{{ route('items.index') }}" method="get">
 

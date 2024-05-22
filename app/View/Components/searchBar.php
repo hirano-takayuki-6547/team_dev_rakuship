@@ -26,12 +26,12 @@ class searchBar extends Component
      */
     public function render()
     {
-        $currentUri = Request::getRequestUri();
+        $currentRouteName = Request::route()->getName();
         $categories = Category::orderBy('id')->get();
         $conditions = ItemCondition::orderBy('id')->get();
 
         return view('components.searchBar')
-            ->with('currentUri', $currentUri)
+            ->with('currentRouteName', $currentRouteName)
             ->with('categories', $categories)
             ->with('conditions', $conditions);
     }
