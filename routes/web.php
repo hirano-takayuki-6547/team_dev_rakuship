@@ -57,7 +57,6 @@ Route::prefix('items')
 Route::get('/', [ItemController::class, 'index'])
     ->name('items.index');
 Route::get('/items/{item}', [ItemController::class, 'show'])
-
     ->name('items.show');
 
 

@@ -5,11 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\User;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\File;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
+use Payjp\Charge;
 
 
 class ItemController extends Controller
@@ -19,6 +25,11 @@ class ItemController extends Controller
     {
         $categories = Category::orderBy('id')->get();
         return view('items.create', compact('categories'));
+    }
+
+    public function showBuyForm(Item $item)
+    {
+        return view('items.item_buy_form', compact('item'));
     }
     public function index(Request $request)
     {
@@ -79,8 +90,77 @@ class ItemController extends Controller
 
 
     // 商品購入
-    public function buyItem()
+    public function buyItem(Request $request, Item $item)
     {
+        $user = Auth::user();
+
+        if ($item->bought_at) {
+            abort(404);
+        }
+
+        $token = $request->input('card-token');
+
+        try {
+            $this->settlement($item->id, $user->id, $token);
+        } catch (Exception $e) {
+            Log::error($e);
+            return redirect()->back()
+                ->with('message', '購入処理が失敗しました。');
+        }
+
+        return redirect()->route('items.show', $item->id)
+            ->with('message', '商品を購入しました。');
+    }
+
+    public function getBoughtItems() {
+        $user = Auth::user();
+
+        $items = $user->boughtItems()->orderBy('bought_at', 'desc')->get();
+
+        return view('mypage.bought-items', compact('items'));
+    }
+
+    public function getSoldItems() {
+        $user = Auth::user();
+
+        $items = $user->soldItems()->orderBy('id', 'desc')->get();
+
+        return view('mypage.sold-items', compact('items'));
+    }
+
+    public function getLikedItems() {
+        $user = Auth::user();
+
+        $items = $user->likedItems()->orderBy('id', 'desc')->get();
+
+        return view('mypage.liked-items', compact('items'));
+    }
+
+    private function settlement($itemID, $buyerID, $token)
+    {
+        DB::beginTransaction();
+
+        try {
+            $item = Item::lockForUpdate()->find($itemID);
+
+            $item->bought_at = Carbon::now();
+            $item->buyer_id  = $buyerID;
+            $item->save();
+
+            $charge = Charge::create([
+                'card'     => $token,
+                'amount'   => $item->price,
+                'currency' => 'jpy'
+            ]);
+            if (!$charge->captured) {
+                throw new Exception('支払い確定失敗');
+            }
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+
+        DB::commit();
     }
 
     public function show(Item $item)
@@ -110,6 +190,7 @@ class ItemController extends Controller
             [
                 'category_id' => 'required',
                 'name' => 'required|max:255',
+                'img_src' => 'required|image|file',
                 'description' => 'required',
                 'price' => 'required|min:1',
             ]
