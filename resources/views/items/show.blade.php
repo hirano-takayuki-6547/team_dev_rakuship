@@ -9,7 +9,7 @@
         </div>
     @endif
     <div>
-        <img src="" alt="商品画像">
+        <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像">
     </div>
     <h3>商品名：{{ $item->name }}</h3>
     <h4>カテゴリ：{{ $item->category->name }}</h4>

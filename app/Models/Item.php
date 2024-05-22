@@ -11,6 +11,7 @@ class Item extends Model
 
     protected $fillable = [
         'category_id',
+        'condition_id',
         'name',
         'img_src',
         'description',
@@ -23,13 +24,14 @@ class Item extends Model
         return $this->belongsTo(User::class);
     }
 
-    // categoriesとのリレーション(多対一)
+    // categoryとのリレーション(多対一)
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-    // itemConditionsとのリレーション
+    // itemConditionとのリレーション
+
     public function itemCondition()
     {
         return $this->belongsTo(ItemCondition::class, 'condition_id');
