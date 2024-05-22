@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManager;
 use Payjp\Charge;
+use App\Models\ItemCondition;
 
 
 class ItemController extends Controller
@@ -31,6 +32,7 @@ class ItemController extends Controller
     {
         return view('items.item_buy_form', compact('item'));
     }
+
     public function index(Request $request)
     {
         // query 生成
@@ -47,8 +49,10 @@ class ItemController extends Controller
         // Item 取得
         $items = $query->paginate(6);
 
+        // dd($items);
+
         $categories = Category::orderBy('id')->get();
-        return view('items.index', ['items' => $items, 'categories' => $categories]);
+        return view('items.index', ['items' => $items, 'categories' => $categories,]);
     }
 
     public function create()
