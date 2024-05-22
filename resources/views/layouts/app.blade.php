@@ -12,13 +12,12 @@
     <nav class="navbar">
         <div class="navbar-brand">
             <a href="{{ route('items.index') }}">
-                <img src="/main/images/logo.png" alt="MyWebsite Logo">
+                <img src="/main/images/logo_re.png" alt="MyWebsite Logo">
             </a>
         </div>
         @if(Auth::user())
         <ul class="navbar-nav">
             <span id="search-category">
-
             <select class="category" >
                 <option value="#" disabled selected>商品ステータス</option>
                 @foreach($categories as $category)
@@ -63,17 +62,26 @@
         </ul>
         @else
         <ul class="navbar-nav">
-            <select class="category" >
-                <option value="#" disabled selected>カテゴリー</option>
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
+            <span id="search-category">
+                <select class="category" >
+                    <option value="#" disabled selected>商品ステータス</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
 
-            <form action="{{ route('items.index') }}" method="post">
-                <input class="search-txt" type="text" name="keyword" value="" placeholder="検索したいことを入力">
-                <button class="search-btn" type="submit">検索</button>
-            </form>
+                <select class="category" >
+                    <option value="#" disabled selected>カテゴリー</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+
+                <form action="{{ route('items.index') }}" method="get">
+                    <input class="search-txt" type="text" name="keyword" value="" placeholder="検索したいことを入力">
+                    <button class="search-btn" type="submit">検索</button>
+                </form>
+            </span>
 
             <li class="nav-item"><a href="{{ route('login') }}">ログイン</a></li>
             <li class="nav-item"><a href="{{ route('register') }}">新規登録</a></li>

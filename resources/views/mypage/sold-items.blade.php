@@ -1,7 +1,7 @@
 @extends('layouts.side')
 
 @section('content-mypage')
-<h3>出品一覧</h3>
+<h2>出品一覧</h2>
 <table border="1">
     <thead>
         <tr><th>ID</th><th>商品名</th><th>注文日</th><th></th></tr>
