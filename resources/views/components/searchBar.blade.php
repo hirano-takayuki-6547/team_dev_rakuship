@@ -25,7 +25,7 @@
                 @endforeach
             </select>
 
-            <span><input class="search-txt" type="text" name="keyword" value="" placeholder="検索したいことを入力"></span>
+            <span><input class="search-txt" type="text" name="keyword" value="" placeholder=" 検索したいことを入力"></span>
             <button class="search-btn" type="submit">検索</button>
         </form>
     </span>

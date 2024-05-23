@@ -6,6 +6,8 @@ body {
     height: 100vh;
 }
 
+/* side menu start --> layouts/side.blade.php */
+
 .container {
     display: flex;
 }
@@ -44,12 +46,27 @@ body {
     background-color: #e0e0e0;
 }
 
+.brand-img img {
+    width: 200px;
+    height: 100px;
+ }
+
+/* side menu end --> layouts/side.blade.php */
+
+
+/* body main start --> layouts/side.blade.php */
+
 .main-content {
     justify-content: center;
     align-items: center;
     padding: 20px;
     width: 100%;
 }
+
+/* body main end --> layouts/side.blade.php */
+
+
+/* mypage index profile start --> /mypage.index */
 
 .profile-wrapper {
     max-width: 600px;
@@ -123,6 +140,76 @@ button:hover {
     background-color: #333;
 }
 
+<<<<<<< HEAD
+=======
+/* mypage index profile end --> /mypage.index */
+
+
+/* もしテーブルつかうなら使う table css start */
+
+table {
+    border-collapse: collapse;
+    border: 0;
+  }
+
+th, td {
+    border: 1px solid #aaa;
+    background-clip: padding-box;
+    scroll-snap-align: start;
+  }
+
+tbody tr:last-child th, tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+thead {
+    z-index: 1000;
+    position: relative;
+  }
+
+  th, td {
+    padding: 0.6rem;
+    min-width: 6rem;
+    text-align: left;
+    margin: 0;
+  }
+
+thead th {
+    position: sticky;
+    top: 0;
+    border-top: 0;
+    background-clip: padding-box;
+  }
+
+  thead th.pin {
+    left: 0;
+    z-index: 1001;
+    border-left: 0;
+  }
+
+  tbody th {
+    background-clip: padding-box;
+    border-left: 0;
+  }
+
+  tbody {
+    z-index: 10;
+    position: relative;
+  }
+
+  tbody th {
+    position: sticky;
+    left: 0;
+  }
+
+  thead th, tbody th {
+    background-color: #f8f8f8;
+  }
+
+/* もしテーブルつかうなら使う table css end */
+
+
+>>>>>>> 531494062f418c6b38de3f2798ea16c5deb381cc
 .card-mypage{
     width:300px;
     gap:24px;
@@ -130,9 +217,4 @@ button:hover {
     box-shadow:0px 2px 4px rgba(0,0,0,0.3);
     border-radius:16px;
     padding:24px;
- }
-
- .brand-img img {
-    width: 200px;
-    height: 100px;
  }
