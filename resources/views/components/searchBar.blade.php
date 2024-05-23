@@ -1,6 +1,15 @@
 @if ($currentRouteName === 'items.index')
     <span id="search-category">
         <form action="{{ route('items.index') }}" method="get">
+            @csrf
+            <label for="" class="checkbox">
+                <input type="checkbox" class="itemCheckbox" aria-checked="false" aria-disabled="false">
+                <div class="label-container">
+                    <div class="label-compo">
+                        <span class="label-text">販売中のみ表示</span>
+                    </div>
+                </div>
+            </label>
 
             <select class="condition">
                 <option value="#" disabled selected>商品ステータス</option>
