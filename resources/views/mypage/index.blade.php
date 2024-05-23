@@ -1,6 +1,7 @@
 @extends('layouts.side')
 
 @section('content-mypage')
+    @include('commons.flash')
     <div class="profile-wrapper">
         <h1>ユーザー情報</h1>
         @section('title')
@@ -19,7 +20,7 @@
                 @method('patch')
                 <span class="image-picker">
                     <input type="file" id="profile_img" name="profile_img" style="display: none;"
-                        accept="image/png,image/jpeg,image/gif"><br>
+                        accept="image/png"><br>
                     <label for="profile_img">
                         @if (!empty($user->profile_img))
                             <img src="/storage/profile_images/{{ $user->profile_img }}" alt=""
