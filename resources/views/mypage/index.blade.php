@@ -3,7 +3,9 @@
 @section('content-mypage')
     <div class="profile-wrapper">
         <h1>ユーザー情報</h1>
-        <h2>ようこそ、{{ $user->name }}さん</h2>
+        @section('title')
+        ようこそ、{{ $user->name }}さん
+        @endsection
         @if (session('status'))
             <div>
                 <span

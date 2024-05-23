@@ -1,10 +1,15 @@
 @extends('layouts.side')
 
 @section('content-mypage')
-<div>
-<h2>お気に入り一覧</h2>
-</div>
+
+
+@section('title', 'お気に入り一覧')
+
+<div class="row">
+
 @foreach($items as $item)
+
+    <div class="card-warpper">
         <div class="card-mypage">
             <div class="card-content">
                 <h2>{{ $item->name }}</h2>
@@ -18,9 +23,11 @@
                     <a href="{{ route('items.show', $item) }}">{{ $item->name }}の詳細を見る</a>
                 </p>
             </div>
-        </div>
+         </div>
     </div>
 
+
 @endforeach
+</div>
 
 @endsection
