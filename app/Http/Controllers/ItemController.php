@@ -50,6 +50,10 @@ class ItemController extends Controller
             $query->where('name', 'LIKE', '%' . $request['keyword'][0] . '%');
         }
 
+        if ($request['status']){
+            $query->where('buyer_id', null);
+        }
+
         // Item 取得
         $items = $query->orderBy('created_at', 'desc')->paginate(18);
 
@@ -58,7 +62,9 @@ class ItemController extends Controller
         $categories = Category::orderBy('id')->get();
 
         $conditions = ItemCondition::orderBy('id')->get();
+
         return view('items.index', ['items' => $items, 'categories' => $categories, 'conditions' => $conditions]);
+       
     }
 
     public function create()
