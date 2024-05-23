@@ -4,10 +4,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Noto Sans JP", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
 }
 
 
@@ -92,25 +88,8 @@ body {
     border-radius: 10px;
 }
 
-.check-box{
-    margin-right: 10px;
-    border-radius: 5px;
-    padding: 11px;
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 12px;
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.check-box-input{
-    padding: 8px;
-    margin-top: 15px;
-}
-
-
 .category {
-    margin-right: 15px;
+    margin-right: 7px;
     border-radius: 5px;
     width: 170px;
     height: 40px;
@@ -208,12 +187,45 @@ body {
     order: 1;
 }
 
-/* .card__thumbnail {
+.card__thumbnail {
     object-fit: scale-down;
     width: 300px;
+    height: 300px;
     margin: 0;
     order: 0;
-} */
+}
+
+.sold__tag {
+    position: relative;
+    overflow: hidden;
+}
+
+.sold__tag::before {
+    content: '';
+    position: absolute;
+    right: -80px;
+    bottom: -80px;
+    width: 0;
+    height: 0;
+    border:80px solid transparent;
+    border-top-color: #c00;
+    transform: rotate(-45deg);
+    box-shadow: -1px -1px 3px rgba(0,0,0,.5);
+
+}
+
+.sold__tag::after {
+    content: 'SOLD!';
+    position: absolute;
+    right: -.3em;
+    bottom: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transform: rotate(-45deg);
+    padding-left: 3em;
+    text-align: center;
+}
 
 .card__image {
     width: 100%;
