@@ -5,12 +5,8 @@
 }
 
 body {
-    font-family: "Helvetica Neue",
-    Arial,
-    "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans",
-    Meiryo,
-    sans-serif;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans", Meiryo, sans-serif;
 }
 
 .navbar {
@@ -19,9 +15,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    top: 0;
     width: 100%;
     position: sticky;
+    top: 0;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
 }
 
 .navbar-brand a {
@@ -43,17 +40,21 @@ body {
     position: relative;
 }
 
-.nav-item a, .nav-item select {
+.nav-item a,
+.nav-item select {
     color: #333;
     text-decoration: none;
     padding: 10px 20px;
     display: block;
     background-color: #fff;
     border: none;
+    border-radius: 8px;
 }
 
-.nav-item a:hover, .nav-item select:hover {
+.nav-item a:hover,
+.nav-item select:hover {
     background-color: #ded9ca;
+    transition: all 0.3s;
 }
 
 .dropdown {
@@ -62,13 +63,13 @@ body {
     border: none;
     padding: 10px;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .dropdown option {
     background-color: #fff;
     color: #333;
 }
-
 
 #search-category {
     display: flex;
@@ -85,6 +86,7 @@ body {
     border: 1px solid #ccc;
     font-size: 16px;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .condition {
@@ -93,6 +95,7 @@ body {
     border: 1px solid #ccc;
     font-size: 16px;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .search-box {
@@ -124,10 +127,11 @@ body {
     font-size: 16px;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .search-btn:hover {
-    background-color: #ded9ca;
+    background-color: #ded9ca9d;
 }
 
 /* class container */
@@ -136,12 +140,17 @@ body {
 
 .card {
     background-color: #fff;
-    box-shadow: 0 0 8px rgba(0, 0, 0, .16);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
     color: #212121;
     text-decoration: none;
     width: 300px;
     box-shadow: #333;
     /* margin: 0 auto;  */
+}
+
+.card:hover {
+    background: #dddddd;
+    transition: all 0.3s;
 }
 
 .card__header {
@@ -173,11 +182,11 @@ body {
 }
 
 .card__text {
-    font-size: .75rem;
+    font-size: 0.75rem;
 }
 
 .card__text + .card__text {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 }
 
 .card__text.-number {
@@ -213,7 +222,8 @@ body {
     margin-bottom: 20px;
 }
 
-.create-form dt, .create-form dd {
+.create-form dt,
+.create-form dd {
     width: 100%;
     margin-bottom: 10px;
 }
@@ -250,7 +260,6 @@ body {
     margin-bottom: 20px;
 }
 
-
 /* 버튼 스타일 */
 .create-form button[type="submit"] {
     width: 20%;
@@ -266,4 +275,31 @@ body {
 
 .create-form button[type="submit"]:hover {
     background-color: #555;
+}
+
+/* 商品一覧グリッドレイアウト */
+.grid-wrapper {
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    gap: 80px;
+    margin-top: 32px;
+}
+
+/* ページネーション */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.pagination li {
+    text-decoration: none;
+    list-style: none;
+    font-size: 20px;
+}
+
+.page-link {
+    margin: 0 4px;
 }
