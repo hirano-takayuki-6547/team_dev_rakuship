@@ -13,6 +13,7 @@
     </div>
     <h3>商品名：{{ $item->name }}</h3>
     <h4>カテゴリ：{{ $item->category->name }}</h4>
+    <h4>商品状態：{{ $item->itemCondition->name }}</h4>
     <p>価格：{{ $item->price }}円</p>
     <p>商品説明：{{ $item->description }}</p>
     <p>

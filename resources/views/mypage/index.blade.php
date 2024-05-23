@@ -14,7 +14,7 @@
             </div>
         @endif
         <div class="profile">
-            <form action="{{ route('mypage.update') }}" method="post">
+            <form action="{{ route('mypage.update') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
                 <span class="image-picker">
