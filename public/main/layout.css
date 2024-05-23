@@ -8,12 +8,8 @@
 
 
 body {
-    font-family: "Helvetica Neue",
-    Arial,
-    "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans",
-    Meiryo,
-    sans-serif;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans", Meiryo, sans-serif;
 }
 
 /* 初期化 end */
@@ -26,9 +22,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    top: 0;
     width: 100%;
     position: sticky;
+    top: 0;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
 }
 
 .navbar-brand a {
@@ -50,17 +47,21 @@ body {
     position: relative;
 }
 
-.nav-item a, .nav-item select {
+.nav-item a,
+.nav-item select {
     color: #333;
     text-decoration: none;
     padding: 10px 20px;
     display: block;
     background-color: #fff;
     border: none;
+    border-radius: 8px;
 }
 
-.nav-item a:hover, .nav-item select:hover {
+.nav-item a:hover,
+.nav-item select:hover {
     background-color: #ded9ca;
+    transition: all 0.3s;
 }
 
 .dropdown {
@@ -69,6 +70,7 @@ body {
     border: none;
     padding: 10px;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .dropdown option {
@@ -76,11 +78,7 @@ body {
     color: #333;
 }
 
-/* header nav bar end */
-
-
 /* search bar start */
-
 #search-category {
     display: flex;
     justify-content: space-around;
@@ -145,10 +143,11 @@ body {
     font-size: 12px;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s;
 }
 
 .search-btn:hover {
-    background-color: #313131;
+    background-color: #ded9ca9d;
 }
 
 /* search bar end */
@@ -163,12 +162,17 @@ body {
 
 .card {
     background-color: #fff;
-    box-shadow: 0 0 8px rgba(0, 0, 0, .16);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
     color: #212121;
     text-decoration: none;
     width: 300px;
     box-shadow: #333;
     /* margin: 0 auto;  */
+}
+
+.card:hover {
+    background: #dddddd;
+    transition: all 0.3s;
 }
 
 .card__header {
@@ -185,7 +189,7 @@ body {
 
 .card__thumbnail {
     object-fit: scale-down;
-    width: 450px;
+    width: 300px;
     margin: 0;
     order: 0;
 }
@@ -200,11 +204,11 @@ body {
 }
 
 .card__text {
-    font-size: .75rem;
+    font-size: 0.75rem;
 }
 
 .card__text + .card__text {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 }
 
 .card__text.-number {
@@ -243,7 +247,8 @@ body {
     margin-bottom: 20px;
 }
 
-.create-form dt, .create-form dd {
+.create-form dt,
+.create-form dd {
     width: 100%;
     margin-bottom: 10px;
 }
@@ -295,5 +300,32 @@ body {
 .create-form button[type="submit"]:hover {
     background-color: #555;
 }
-
 /* items/create.blade edit form end */
+
+
+/* 商品一覧グリッドレイアウト */
+.grid-wrapper {
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    gap: 80px;
+    margin-top: 32px;
+}
+
+/* ページネーション */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.pagination li {
+    text-decoration: none;
+    list-style: none;
+    font-size: 20px;
+}
+
+.page-link {
+    margin: 0 4px;
+}
