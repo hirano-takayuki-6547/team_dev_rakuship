@@ -329,3 +329,16 @@ body {
 .page-link {
     margin: 0 4px;
 }
+
+/* show.blade.php */
+.show-item-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.show-item {
+    display: flex;
+    line-height:normal;
+
+}

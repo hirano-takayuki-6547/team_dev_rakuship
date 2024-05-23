@@ -8,13 +8,32 @@
             </span>
         </div>
     @endif
-    <div>
-        <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像">
+    <div class="show-item-container">
+        <div class="item-img-src">
+            <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像">
+        </div>
+        <div class="show-item">
+            <table class="show-item-table">
+                <tr class="item-name">
+                    <th>商品名：</th>
+                    <td>{{ $item->name }}</td>
+                </tr>
+                <tr class="item-category">
+                    <th>カテゴリ：</th>
+                    <td>{{ $item->category->name }}</td>
+                </tr>
+                <tr class="item-price">
+                    <th>価格：</th>
+                    <td>{{ $item->price }}</td>
+                </tr>
+                <tr class="item-name">
+                    <th>商品説明：</th>
+                    <td>{{ $item->description }}</td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <h3>商品名：{{ $item->name }}</h3>
-    <h4>カテゴリ：{{ $item->category->name }}</h4>
-    <p>価格：{{ $item->price }}円</p>
-    <p>商品説明：{{ $item->description }}</p>
+
     <p>
         @if ($item->seller_id == Auth::id())
             <a href="{{ route('item.edit', $item) }}">編集する</a>
