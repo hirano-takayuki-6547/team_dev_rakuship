@@ -5,7 +5,7 @@
     @if (session('status'))
         <div>
             <span
-                style="margin-left: 200px; color: red; background-color: white; border-radius: 8px; padding: 4px 8px;">{{ session('status') }}
+                style="margin-left: 200px; color: 赤; background-color: #d1e7dd; border-radius: 8px; padding: 4px 8px;">{{ session('status') }}
             </span>
         </div>
     @endif
