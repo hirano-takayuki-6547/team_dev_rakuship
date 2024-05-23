@@ -7,25 +7,17 @@
 
 <div class="row">
 
-@foreach($items as $item)
-
-    <div class="card-warpper">
-        <div class="card-mypage">
-            <div class="card-content">
-                <h2>{{ $item->name }}</h2>
-                <figure>
-                    <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像">
+    @foreach ($items as $item)
+    <article class="card">
+        <a href="{{ route('items.show', $item->id) }}" style="text-decoration: none; color: #000000;">
+            <div class="card__header">
+                <figure class="card__thumbnail">
+                    <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像" class="card__image" style="object-fit: cover; width: 300px; height: 300px;">
                 </figure>
-                <p>{{ $item->description }}</p>
-                <p>{{ $item->category->name }}</p>
-                <p>{{ $item->price }}</p>
-                <p>
-                    <a href="{{ route('items.show', $item) }}">{{ $item->name }}の詳細を見る</a>
-                </p>
+                <h2 class="card__title">{{ $item->name }}</h2>
             </div>
-         </div>
-    </div>
-
+        </a>
+    </article>
 
 @endforeach
 </div>

@@ -194,6 +194,7 @@ body {
 .card:hover {
     background: #dddddd;
     transition: all 0.3s;
+    transform: translateY(-5px);
 }
 
 .card__header {
