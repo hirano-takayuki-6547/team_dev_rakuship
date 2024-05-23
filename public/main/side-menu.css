@@ -28,6 +28,9 @@ body {
     background-color: #f4f4f4;
     padding: 20px;
     box-sizing: border-box;
+    position: sticky;
+    left: 0;
+    top: 0;
 }
 
 .sidebar h1 {
@@ -57,9 +60,12 @@ body {
     background-color: #e0e0e0;
 }
 
+.brand-img img {
+    width: 200px;
+    height: 100px;
+}
 
 /* side menu end --> layouts/side.blade.php */
-
 
 /* body main start --> layouts/side.blade.php */
 
@@ -72,7 +78,6 @@ body {
 }
 
 /* body main end --> layouts/side.blade.php */
-
 .grow {
     flex-grow: 1;
     text-align: center;
@@ -126,7 +131,8 @@ label {
     text-align: left;
 }
 
-input, textarea {
+input,
+textarea {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -157,15 +163,6 @@ button:hover {
     background-color: #333;
 }
 
-/* mypage index profile end --> /mypage.index */
-
-
-/* もしテーブルつかうなら使う table css start */
-
-
-/* もしテーブルつかうなら使う table css end */
-
-
 .card-warpper{
     /* max-width: 600px; */
     width: 100%;
@@ -186,3 +183,4 @@ button:hover {
     border-radius:16px;
     padding:24px;
  }
+
