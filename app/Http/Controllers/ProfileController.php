@@ -24,15 +24,16 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
-
         $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->description = $request->input('description');
 
         if ($request->has('profile_img')) {
             $filename = $this->saveProfileImg($request->file('profile_img'));
             $user->profile_img = $filename;
         }
+
+        $user->email = $request->input('email');
+        $user->description = $request->input('description');
+
 
         $user->save();
 
@@ -90,6 +91,8 @@ class ProfileController extends Controller
     private function saveProfileImg(UploadedFile $file)
     {
         $tempPath = $this->makeTempPath();
+
+        // dd($tempPath);
 
         ImageManager::imagick()->read($file)->cover(200, 200)->save($tempPath);
 

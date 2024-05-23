@@ -177,8 +177,8 @@ body {
 
 .card__header {
     /* display: flex; */
-    flex-wrap: wrap;
-    margin: 0 auto;
+    /* flex-wrap: wrap; */
+    width: 300px;
 }
 
 .card__title {
@@ -187,12 +187,12 @@ body {
     order: 1;
 }
 
-.card__thumbnail {
+/* .card__thumbnail {
     object-fit: scale-down;
     width: 300px;
     margin: 0;
     order: 0;
-}
+} */
 
 .card__image {
     width: 100%;
@@ -328,4 +328,18 @@ body {
 
 .page-link {
     margin: 0 4px;
+}
+
+/* 出品商品一覧グリッドレイアウト */
+.sold-items-grid-wrapper {
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    gap: 80px;
+    margin-top: 32px;
+}
+
+.sold-item {
+    width: 300px;
 }

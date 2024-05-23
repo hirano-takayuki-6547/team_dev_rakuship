@@ -10,7 +10,6 @@ body {
 
 .container {
     display: flex;
-    width: 100%;
 }
 
 .sidebar {
@@ -58,11 +57,10 @@ body {
 /* body main start --> layouts/side.blade.php */
 
 .main-content {
-    flex-grow: 1;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    box-sizing: border-box;
+    width: 100%;
 }
 
 /* body main end --> layouts/side.blade.php */
@@ -142,6 +140,8 @@ button:hover {
     background-color: #333;
 }
 
+<<<<<<< HEAD
+=======
 /* mypage index profile end --> /mypage.index */
 
 
@@ -209,6 +209,7 @@ thead th {
 /* もしテーブルつかうなら使う table css end */
 
 
+>>>>>>> 531494062f418c6b38de3f2798ea16c5deb381cc
 .card-mypage{
     width:300px;
     gap:24px;

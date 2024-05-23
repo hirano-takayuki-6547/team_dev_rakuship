@@ -1,24 +1,16 @@
 @extends('layouts.side')
 
 @section('content-mypage')
-<h3>出品一覧</h3>
-<table border="1">
-    <thead>
-        <tr><th>ID</th><th>商品名</th><th>注文日</th><th></th></tr>
-
-    </thead>
-    <tbody>
-        @foreach($items as $item)
-
-            <tr>
-                <td>{{ $item->id }}</td>
-                <td>{{ $item->name }}</td>
-                <td>{{ $item->updated_at }}</td>
-                <td><a href="{{ route('items.show', $item)}}">詳細</a></td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
-
-
+    <h3>出品一覧</h3>
+    @foreach ($items as $item)
+        <div class="sold-item">
+            <a href="{{ route('items.show', $item->id) }}" style="text-decoration: none; color: #000000;">
+                <div class="sold-item">
+                    <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像"
+                        style="object-fit: cover; width: 200px; height: 200px;">
+                    <h2>{{ $item->name }}</h2>
+                </div>
+            </a>
+        </div>
+    @endforeach
 @endsection
