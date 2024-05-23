@@ -82,8 +82,6 @@ class ItemController extends Controller
         $file_name = $request->file('img_src')->getClientOriginalName();
         $file_path = $request->file('img_src')->storeAs('public/' . $dir, $file_name);
 
-        // $img_src = $this->saveItemImg($request->file('img_src'));
-
         // 商品画像取得
 
         $item = new Item;
@@ -235,15 +233,7 @@ class ItemController extends Controller
     {
         $tempPath = $this->makeTempPath();
 
-        // dd($file);
         $errors = [];
-
-        // $this->validate(
-        //     $file,
-        //     [
-        //         ''
-        //     ]
-        // );
 
         $fileType = [
             'image/png',
