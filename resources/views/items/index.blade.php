@@ -10,12 +10,12 @@
                         @if (isset($item->buyer_id))
                         <figure class="card__thumbnail sold__tag">
                             <!-- <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像" class="card__image" style="object-fit: cover; width: 300px; height: 300px;"> -->
-                            <img src="https://placehold.jp/300x300.png" alt="商品画像" class="card__image">
+                            <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像" class="card__image">
                         </figure>
                         @else
                         <figure class="card__thumbnail">
                             <!-- <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像" class="card__image" style="object-fit: cover; width: 300px; height: 300px;"> -->
-                            <img src="https://placehold.jp/300x300.png" alt="商品画像" class="card__image">
+                            <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像" class="card__image">
                         </figure>
                         @endif
                         <h2 class="card__title">{{ $item->name }}</h2>
