@@ -48,7 +48,7 @@ class ItemController extends Controller
         }
 
         // Item 取得
-        $items = $query->paginate(6);
+        $items = $query->paginate(18);
 
         // dd($items);
 
@@ -120,7 +120,8 @@ class ItemController extends Controller
             ->with('message', '商品を購入しました。');
     }
 
-    public function getBoughtItems() {
+    public function getBoughtItems()
+    {
         $user = Auth::user();
 
         $items = $user->boughtItems()->orderBy('bought_at', 'desc')->get();
@@ -128,7 +129,8 @@ class ItemController extends Controller
         return view('mypage.bought-items', compact('items'));
     }
 
-    public function getSoldItems() {
+    public function getSoldItems()
+    {
         $user = Auth::user();
 
         $items = $user->soldItems()->orderBy('id', 'desc')->get();
@@ -136,7 +138,8 @@ class ItemController extends Controller
         return view('mypage.sold-items', compact('items'));
     }
 
-    public function getLikedItems() {
+    public function getLikedItems()
+    {
         $user = Auth::user();
 
         $items = $user->likedItems()->orderBy('id', 'desc')->get();
