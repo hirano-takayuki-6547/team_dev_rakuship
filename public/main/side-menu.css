@@ -1,9 +1,15 @@
+html, body, .container{
+    min-height: 100vh;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
     margin: 0;
     padding: 0;
-    display: flex;
-    height: 100vh;
+
 }
 
 /* side menu start --> layouts/side.blade.php */
@@ -11,6 +17,11 @@ body {
 .container {
     display: flex;
 }
+
+.brand-img img {
+    width: 200px;
+    height: 100px;
+ }
 
 .sidebar {
     width: 250px;
@@ -59,25 +70,35 @@ body {
 /* body main start --> layouts/side.blade.php */
 
 .main-content {
-    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 20px;
-    width: 100%;
 }
 
 /* body main end --> layouts/side.blade.php */
+.grow {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
 
 /* mypage index profile start --> /mypage.index */
 
 .profile-wrapper {
-    max-width: 600px;
+    max-width: 40vw;
     width: 100%;
     /* justify-content: center; */
     margin: 0 auto;
     flex-grow: 1;
     align-items: center;
     padding: 20px;
-    box-sizing: border-box;
+
 }
 
 .profile-wrapper h1 {
@@ -142,11 +163,24 @@ button:hover {
     background-color: #333;
 }
 
-.card-mypage {
-    width: 300px;
-    gap: 24px;
-    border: 1px solid #ebeaec;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
-    border-radius: 16px;
-    padding: 24px;
+.card-warpper{
+    /* max-width: 600px; */
+    width: 100%;
+    /* justify-content: center; */
+    margin: 0 auto;
+    flex-grow: 1;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
+
+
+.card-mypage{
+    width: 300px;
+    gap:24px;
+    border:1px solid #ebeaec;
+    box-shadow:0px 2px 4px rgba(0,0,0,0.3);
+    border-radius:16px;
+    padding:24px;
+ }
+

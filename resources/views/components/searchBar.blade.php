@@ -2,13 +2,11 @@
     <span id="search-category">
         <form action="{{ route('items.index') }}" method="get">
             @csrf
-            <label for="" class="checkbox">
-                <input type="checkbox" class="itemCheckbox" aria-checked="false" aria-disabled="false">
-                <div class="label-container">
-                    <div class="label-compo">
-                        <span class="label-text">販売中のみ表示</span>
-                    </div>
-                </div>
+            <label for="itemCheckbox" class="check-box">
+                <span>
+                    <input type="checkbox" id="itemCheckbox" class="check-box-input" aria-checked="false" aria-disabled="false">
+                        販売中のみ表示
+                </span>
             </label>
 
             <select class="condition">
