@@ -6,7 +6,6 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\ItemCondition;
-use App\Models\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\File;

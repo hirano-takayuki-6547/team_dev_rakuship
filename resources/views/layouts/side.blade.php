@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="/main/side-menu.css">
-    <link rel="stylesheet" href="/main/mypage-profile.css">
-
+    @vite(['resources/js/app.js'])
 </head>
 <body>
     <div class="container">
@@ -26,11 +25,9 @@
                 </ul>
             </nav>
         </aside>
-
-        <main class="main-content">
-            @yield('content-mypage')
-        </main>
-
     </div>
+    <main class="main-content">
+        @yield('content-mypage')
+    </main>
 </body>
 </html>
