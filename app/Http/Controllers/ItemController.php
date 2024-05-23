@@ -6,7 +6,6 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\ItemCondition;
-use App\Models\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\File;
@@ -37,18 +36,22 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         // query 生成
-        $query = Item::query()->with('category');
+        $query = Item::query();
 
-        if ($request->category_id) {
-            $query->where('category_id', $request->category_id);
+        if ($request['category']) {
+            $query->where('category_id', $request['category'][0]);
         }
 
-        if ($request->keyword) {
-            $query->where('name', 'LIKE', '%' . $request->keyword . '%');
+        if ($request['condition']) {
+            $query->where('condition_id', $request['condition'][0]);
+        }
+
+        if ($request['keyword']) {
+            $query->where('name', 'LIKE', '%' . $request['keyword'][0] . '%');
         }
 
         // Item 取得
-        $items = $query->paginate(18);
+        $items = $query->orderBy('created_at', 'desc')->paginate(18);
 
         // dd($items);
 
@@ -82,8 +85,6 @@ class ItemController extends Controller
 
         $file_name = $request->file('img_src')->getClientOriginalName();
         $file_path = $request->file('img_src')->storeAs('public/' . $dir, $file_name);
-
-        // $img_src = $this->saveItemImg($request->file('img_src'));
 
         // 商品画像取得
 
@@ -236,15 +237,7 @@ class ItemController extends Controller
     {
         $tempPath = $this->makeTempPath();
 
-        // dd($file);
         $errors = [];
-
-        // $this->validate(
-        //     $file,
-        //     [
-        //         ''
-        //     ]
-        // );
 
         $fileType = [
             'image/png',

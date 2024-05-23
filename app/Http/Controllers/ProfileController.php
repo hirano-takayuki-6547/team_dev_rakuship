@@ -20,24 +20,6 @@ class ProfileController extends Controller
         return view('mypage.index', compact('user'));
     }
 
-    // プロフィール更新
-    public function update(Request $request)
-    {
-        $user = Auth::user();
-
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->description = $request->input('description');
-
-        if ($request->has('profile_img')) {
-            $filename = $this->saveProfileImg($request->file('profile_img'));
-            $user->profile_img = $filename;
-        }
-
-        $user->save();
-
-        return redirect()->back()->with('status', 'プロフィールを更新しました');
-    }
 
     // いいねした商品一覧表示
     public function getLikedItems()
@@ -90,12 +72,31 @@ class ProfileController extends Controller
     private function saveProfileImg(UploadedFile $file)
     {
         $tempPath = $this->makeTempPath();
-
         ImageManager::imagick()->read($file)->cover(200, 200)->save($tempPath);
 
         $filePath = Storage::disk('public')
             ->putFile('profile_images', new File($tempPath));
 
         return basename($filePath);
+    }
+
+
+    // プロフィール更新
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->name = $request->input('name');
+
+        if ($request->has('profile_img')) {
+            $filename = $this->saveProfileImg($request->file('profile_img'));
+            $user->profile_img = $filename;
+        }
+
+        $user->email = $request->input('email');
+        $user->description = $request->input('description');
+
+        $user->save();
+
+        return redirect()->back()->with('status', 'プロフィールを更新しました');
     }
 }

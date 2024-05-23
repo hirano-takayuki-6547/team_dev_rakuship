@@ -1,23 +1,36 @@
+html, body, .container{
+    min-height: 100vh;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
     margin: 0;
     padding: 0;
-    display: flex;
-    height: 100vh;
+
 }
 
 /* side menu start --> layouts/side.blade.php */
 
 .container {
     display: flex;
-    width: 100%;
 }
+
+.brand-img img {
+    width: 200px;
+    height: 100px;
+ }
 
 .sidebar {
     width: 250px;
     background-color: #f4f4f4;
     padding: 20px;
     box-sizing: border-box;
+    position: sticky;
+    left: 0;
+    top: 0;
 }
 
 .sidebar h1 {
@@ -50,35 +63,42 @@ body {
 .brand-img img {
     width: 200px;
     height: 100px;
- }
+}
 
 /* side menu end --> layouts/side.blade.php */
-
 
 /* body main start --> layouts/side.blade.php */
 
 .main-content {
-    flex-grow: 1;
-    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 20px;
-    box-sizing: border-box;
 }
 
 /* body main end --> layouts/side.blade.php */
+.grow {
+    flex-grow: 1;
+    text-align: center;
+}
 
+.row {
+    display: flex;
+    justify-content: space-between;
+}
 
 /* mypage index profile start --> /mypage.index */
 
 .profile-wrapper {
-    max-width: 600px;
+    max-width: 40vw;
     width: 100%;
     /* justify-content: center; */
     margin: 0 auto;
     flex-grow: 1;
     align-items: center;
     padding: 20px;
-    box-sizing: border-box;
+
 }
 
 .profile-wrapper h1 {
@@ -111,7 +131,8 @@ label {
     text-align: left;
 }
 
-input, textarea {
+input,
+textarea {
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -142,78 +163,24 @@ button:hover {
     background-color: #333;
 }
 
-/* mypage index profile end --> /mypage.index */
-
-
-/* もしテーブルつかうなら使う table css start */
-
-table {
-    border-collapse: collapse;
-    border: 0;
-  }
-
-th, td {
-    border: 1px solid #aaa;
-    background-clip: padding-box;
-    scroll-snap-align: start;
-  }
-
-tbody tr:last-child th, tbody tr:last-child td {
-    border-bottom: 0;
-  }
-
-thead {
-    z-index: 1000;
-    position: relative;
-  }
-
-  th, td {
-    padding: 0.6rem;
-    min-width: 6rem;
-    text-align: left;
-    margin: 0;
-  }
-
-thead th {
-    position: sticky;
-    top: 0;
-    border-top: 0;
-    background-clip: padding-box;
-  }
-
-  thead th.pin {
-    left: 0;
-    z-index: 1001;
-    border-left: 0;
-  }
-
-  tbody th {
-    background-clip: padding-box;
-    border-left: 0;
-  }
-
-  tbody {
-    z-index: 10;
-    position: relative;
-  }
-
-  tbody th {
-    position: sticky;
-    left: 0;
-  }
-
-  thead th, tbody th {
-    background-color: #f8f8f8;
-  }
-
-/* もしテーブルつかうなら使う table css end */
+.card-warpper{
+    /* max-width: 600px; */
+    width: 100%;
+    /* justify-content: center; */
+    margin: 0 auto;
+    flex-grow: 1;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
 
 .card-mypage{
-    width:300px;
+    width: 300px;
     gap:24px;
     border:1px solid #ebeaec;
     box-shadow:0px 2px 4px rgba(0,0,0,0.3);
     border-radius:16px;
     padding:24px;
  }
+

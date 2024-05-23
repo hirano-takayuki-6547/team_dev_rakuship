@@ -65,8 +65,9 @@
                     <button type="submit">いいね登録</button>
                 </form>
             @endif
-            |
+            @if (!isset($item->buyer_id))
             <a href="{{ route('show.buy.form', $item) }}">購入する</a>
+            @endif
         @endif
     </p>
 

@@ -81,11 +81,11 @@ Route::prefix('mypage')
             ->name('mypage.sold-items');
 
         // プロフィール更新
-        Route::post('update-profile', [ProfileController::class, 'update'])
+        Route::patch('update-profile', [ProfileController::class, 'update'])
             ->name('mypage.update');
 
         // 退会
-        Route::post('delete', [ProfileController::class, 'destroy'])
+        Route::delete('delete', [ProfileController::class, 'destroy'])
             ->name('mypage.destroy');
     });
 
