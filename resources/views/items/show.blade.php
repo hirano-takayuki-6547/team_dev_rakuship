@@ -10,7 +10,9 @@
     @endif
     <div class="show-item-container">
         <div class="item-img-src">
-            <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像">
+            <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像"
+                style="object-fit: cover; width
+            300px; height: 300px;">
         </div>
         <div class="show-item">
             <table class="show-item-table">
@@ -34,27 +36,30 @@
         </div>
     </div>
 
-    <p>
-        @if ($item->seller_id == Auth::id())
+    @if ($item->seller_id == Auth::id())
+        <p class="option">
             <a href="{{ route('item.edit', $item) }}">編集する</a>
             |
             <a href="" onclick="deleteitem()">削除する</a>
-            <form action="{{ route('item.destroy', $item->id) }}" method="post" id="delete-form">
-                @csrf
-            </form>
-            <script type="text/javascript">
-                function deleteitem() {
-                    event.preventDefault();
-                    if (window.confirm('本当に削除しますか？')) {
-                        document.getElementById('delete-form').submit();
-                    }
+        <form action="{{ route('item.destroy', $item->id) }}" method="post" id="delete-form">
+            @csrf
+        </form>
+        <script type="text/javascript">
+            function deleteitem() {
+                event.preventDefault();
+                if (window.confirm('本当に削除しますか？')) {
+                    document.getElementById('delete-form').submit();
                 }
-            </script>
-        @else
+            }
+        </script>
+        </p>
+    @else
+        <p class="option">
             @if (Auth::user()->isLike($item->id))
                 <form action="{{ route('likes.destroy') }}" method="post">
                     @csrf
                     @method('delete')
+                    <img src="image.svg" alt="">
                     <input type="hidden" name="item_id" value="{{ $item->id }}">
                     <button type="submit">いいね解除</button>
                 </form>
@@ -66,9 +71,9 @@
                 </form>
             @endif
             @if (!isset($item->buyer_id))
-            <a href="{{ route('show.buy.form', $item) }}">購入する</a>
+                <a href="{{ route('show.buy.form', $item) }}">購入する</a>
             @endif
-        @endif
-    </p>
+        </p>
+    @endif
 
 @endsection

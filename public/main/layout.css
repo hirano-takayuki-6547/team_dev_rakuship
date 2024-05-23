@@ -375,6 +375,7 @@ body {
 .show-item {
     display: flex;
     line-height:normal;
+}
 
 /* 出品商品一覧グリッドレイアウト */
 .sold-items-grid-wrapper {
@@ -388,4 +389,9 @@ body {
 
 .sold-item {
     width: 300px;
+}
+
+.option {
+    text-align: center;
+    margin: 0 auto;
 }
