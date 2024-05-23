@@ -51,7 +51,7 @@ class ItemController extends Controller
         }
 
         // Item 取得
-        $items = $query->paginate(18);
+        $items = $query->orderBy('created_at', 'desc')->paginate(18);
 
         // dd($items);
 
