@@ -2,7 +2,7 @@
 
 @section('content-mypage')
 
-@section('title', 'お気に入り一覧')
+@section('title', 'いいね！一覧')
 
 <div class="row">
     <div class="grid-wrapper">
