@@ -1,4 +1,6 @@
-html, body, .container{
+html,
+body,
+.container {
     min-height: 100vh;
 }
 
@@ -9,7 +11,6 @@ body {
     font-style: normal;
     margin: 0;
     padding: 0;
-
 }
 
 /* side menu start --> layouts/side.blade.php */
@@ -21,7 +22,7 @@ body {
 .brand-img img {
     width: 200px;
     height: 100px;
- }
+}
 
 .sidebar {
     width: 250px;
@@ -84,6 +85,8 @@ body {
 
 .row {
     display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
     justify-content: space-between;
 }
 
@@ -97,7 +100,6 @@ body {
     flex-grow: 1;
     align-items: center;
     padding: 20px;
-
 }
 
 .profile-wrapper h1 {
@@ -164,27 +166,36 @@ button:hover {
 
 /* いいね！購入、出品一覧 start */
 
+.grid-wrapper {
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2vw;
+    margin-top: 32px;
+}
+
 .card {
     background-color: #fff;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
     color: #212121;
     text-decoration: none;
-    width: 300px;
+    width: 20vw;
     box-shadow: #333;
-    margin-left: 30px;
+    margin-left: 2vw;
     /* margin: 0 auto;  */
 }
 
 .card:hover {
     background: #dddddd;
     transition: all 0.3s;
-    transform: translateY(-5px);
+    transform: translateY(-10px);
 }
 
 .card__header {
     /* display: flex; */
     /* flex-wrap: wrap; */
-    width: 300px;
+    width: 20vw;
 }
 
 .card__title {
@@ -203,6 +214,9 @@ button:hover {
 .card__image {
     width: 100%;
     margin: 0 auto;
+    object-fit: cover;
+    width: 95%;
+    height: 95%;
 }
 
 .card__body {

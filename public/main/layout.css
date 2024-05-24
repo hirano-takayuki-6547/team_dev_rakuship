@@ -8,8 +8,11 @@
 
 
 body {
-    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
-        "Hiragino Sans", Meiryo, sans-serif;
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    padding-top: 100px;
 }
 
 /* 初期化 end */
@@ -23,9 +26,10 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    position: sticky;
+    position: fixed;
     top: 0;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
+    z-index: 1;
 }
 
 .navbar-brand a {
@@ -173,7 +177,7 @@ body {
 .card:hover {
     background: #dddddd;
     transition: all 0.3s;
-    transform: translateY(-5px);
+    transform: translateY(-10px);
 }
 
 .card__header {
