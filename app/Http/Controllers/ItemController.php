@@ -64,7 +64,7 @@ class ItemController extends Controller
         $conditions = ItemCondition::orderBy('id')->get();
 
         return view('items.index', ['items' => $items, 'categories' => $categories, 'conditions' => $conditions]);
-       
+
     }
 
     public function create()
@@ -80,7 +80,7 @@ class ItemController extends Controller
             $request,
             [
                 'category' => 'required',
-                'name' => 'required',
+                'item_name' => 'required',
                 'description' => 'required',
                 'price' => 'required',
                 'img_src' => 'required|image|file|mimes:png',
@@ -209,7 +209,7 @@ class ItemController extends Controller
             $request,
             [
                 'category_id' => 'required',
-                'name' => 'required|max:255',
+                'item_name' => 'required|max:255',
                 'description' => 'required',
                 'price' => 'required|min:1',
             ]
