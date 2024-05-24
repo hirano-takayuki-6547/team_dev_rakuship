@@ -64,7 +64,7 @@ class ItemController extends Controller
         $conditions = ItemCondition::orderBy('id')->get();
 
         return view('items.index', ['items' => $items, 'categories' => $categories, 'conditions' => $conditions]);
-       
+
     }
 
     public function create()
@@ -228,7 +228,7 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         $item->delete();
-        return redirect(route('items.index'));
+        return redirect(route('items.index'))->with('status', '商品を削除しました');
     }
 
     // 一時ファイルの作成
