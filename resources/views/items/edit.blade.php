@@ -19,7 +19,7 @@
                 </dd>
                 <dt>商品名</dt>
                 <dd>
-                    <input type="text" name="item_name" value="{{ old('item_name', $item->name) }}">
+                    <input type="text" name="item_name" value="{{ old('item_name', $item->item_name) }}">
                 </dd>
                 <dt>商品状態</dt>
                 <dd>
