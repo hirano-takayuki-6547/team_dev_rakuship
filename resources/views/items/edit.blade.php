@@ -20,7 +20,7 @@
                 </dd>
                 <dt>商品名</dt>
                 <dd>
-                    <input type="text" name="item_name" value="{{ old('item_name', $item->item_name) }}">
+                    <input type="text" name="item_name" value="{{ old('item_name', $item->item_name) }}" placeholder="商品名を入力してください。">
                 </dd>
                 <dt>商品状態</dt>
                 <dd>
@@ -49,12 +49,12 @@
 
                 <dt>商品説明</dt>
                 <dd>
-                    <textarea name="description" id="">{{ old('description', $item->description) }}</textarea>
+                    <textarea name="description" id="" placeholder="商品の説明入力してください。">{{ old('description', $item->description) }}</textarea>
                 </dd>
 
                 <dt>商品価格</dt>
                 <dd>
-                    <input type="number" name="price" value="{{ old('price', $item->price) }}">円
+                    <input type="number" name="price" value="{{ old('price', $item->price) }}" placeholder="価格を入力してください。">
                 </dd>
             </dl>
             <button type="submit">更新する</button>
