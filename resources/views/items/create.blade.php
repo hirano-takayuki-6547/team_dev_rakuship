@@ -26,7 +26,7 @@
 
                 <dt>商品名
                 <dt>
-                    <input type="text" name="name" value="{{ old('name') }}">
+                    <input type="text" name="item_name" value="{{ old('name') }}">
 
                 <dt>カテゴリー</dt>
                 <dd>

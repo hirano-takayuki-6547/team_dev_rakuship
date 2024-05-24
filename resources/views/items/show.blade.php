@@ -27,7 +27,7 @@
             <table class="show-item-table">
                 <tr class="item-name">
                     <th>商品名：</th>
-                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->item_name }}</td>
                 </tr>
                 <tr class="item-category">
                     <th>カテゴリ：</th>
