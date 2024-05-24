@@ -209,6 +209,7 @@ class ItemController extends Controller
             $request,
             [
                 'category_id' => 'required',
+                'condition_id' => 'required',
                 'item_name' => 'required|max:255',
                 'description' => 'required',
                 'price' => 'required|min:1',
@@ -220,7 +221,15 @@ class ItemController extends Controller
             $item->img_src = $filename;
         }
 
-        $item->update($request->all());
+        // $item->update($request->all());
+        $item->item_name = $request->input('item_name');
+        $item->category_id = $request->input('category_id');
+        $item->condition_id = $request->input('condition_id');
+        $item->description = $request->input('description');
+        $item->price = $request->input('price');
+
+        $item->save();
+
         return redirect(route('items.show', ['item' => $item]))
             ->with('status', '商品を編集しました');
     }
