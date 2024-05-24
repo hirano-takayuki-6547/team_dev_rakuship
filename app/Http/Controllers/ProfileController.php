@@ -9,6 +9,7 @@ use Illuminate\Http\UploadedFile;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\MyPage\Profile\EditRequest;
 
 class ProfileController extends Controller
 {
@@ -60,8 +61,11 @@ class ProfileController extends Controller
         redirect(route('items.index'))->with('status', '退会しました。');
     }
 
-    // 一時ファイルの作成
-    private function makeTempPath()
+    /**
+     *一時ファイルを作成してファイル名を返す
+     @return string
+     */
+    private function makeTempPath(): string
     {
         $tmp_fp = tmpfile();
         $meta = stream_get_meta_data($tmp_fp);
@@ -82,19 +86,10 @@ class ProfileController extends Controller
 
 
     // プロフィール更新
-    public function update(Request $request)
+    public function update(EditRequest $request)
     {
-        $user = Auth::user();
 
-        $this->validate(
-            $request,
-            [
-                'profile_img' => 'nullable|image|file|mimes:png',
-                'name' => 'required',
-                'email' => 'required',
-                'description' => 'nullable',
-            ]
-        );
+        $user = Auth::user();
 
         $user->name = $request->input('name');
 

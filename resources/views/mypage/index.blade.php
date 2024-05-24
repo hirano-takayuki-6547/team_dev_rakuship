@@ -20,7 +20,7 @@
                 @method('patch')
                 <span class="image-picker">
                     <input type="file" id="profile_img" name="profile_img" style="display: none;"
-                        accept="image/png"><br>
+                        accept="image/png,image/jpeg,image/gif"><br>
                     <label for="profile_img">
                         @if (!empty($user->profile_img))
                             <img src="/storage/profile_images/{{ $user->profile_img }}" alt=""
