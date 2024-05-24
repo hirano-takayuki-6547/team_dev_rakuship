@@ -1,9 +1,8 @@
 @extends('layouts.side')
 
-@section('content-mypage')
 
 @section('title', '出品商品一覧')
-
+@section('content-mypage')
 <div class="row">
 @foreach ($items as $item)
     <article class="card">
@@ -18,6 +17,4 @@
     </article>
 @endforeach
 </div>
-
-
 @endsection

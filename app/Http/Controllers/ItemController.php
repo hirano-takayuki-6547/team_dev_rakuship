@@ -36,18 +36,22 @@ class ItemController extends Controller
     public function index(Request $request)
     {
         // query 生成
-        $query = Item::query()->with('category');
+        $query = Item::query();
 
-        if ($request->category_id) {
-            $query->where('category_id', $request->category_id);
+        if ($request['category']) {
+            $query->where('category_id', $request['category'][0]);
         }
 
-        if ($request->keyword) {
-            $query->where('name', 'LIKE', '%' . $request->keyword . '%');
+        if ($request['condition']) {
+            $query->where('condition_id', $request['condition'][0]);
+        }
+
+        if ($request['keyword']) {
+            $query->where('name', 'LIKE', '%' . $request['keyword'][0] . '%');
         }
 
         // Item 取得
-        $items = $query->paginate(18);
+        $items = $query->orderBy('created_at', 'desc')->paginate(18);
 
         // dd($items);
 

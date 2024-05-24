@@ -5,6 +5,7 @@
 @section('title', 'お気に入り一覧')
 
 <div class="row">
+
 @foreach ($items as $item)
     <article class="card">
         <a href="{{ route('items.show', $item->id) }}" style="text-decoration: none; color: #000000;">

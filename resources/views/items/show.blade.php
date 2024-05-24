@@ -8,34 +8,58 @@
             </span>
         </div>
     @endif
-    <div>
-        <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像">
+    <div class="show-item-container">
+        <div class="item-img-src">
+            <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像"
+                style="object-fit: cover; width
+            300px; height: 300px;">
+        </div>
+        <div class="show-item">
+            <table class="show-item-table">
+                <tr class="item-name">
+                    <th>商品名：</th>
+                    <td>{{ $item->name }}</td>
+                </tr>
+                <tr class="item-category">
+                    <th>カテゴリ：</th>
+                    <td>{{ $item->category->name }}</td>
+                </tr>
+                <tr class="item-price">
+                    <th>価格：</th>
+                    <td>{{ $item->price }}</td>
+                </tr>
+                <tr class="item-name">
+                    <th>商品説明：</th>
+                    <td>{{ $item->description }}</td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <h3>商品名：{{ $item->name }}</h3>
-    <h4>カテゴリ：{{ $item->category->name }}</h4>
-    <p>価格：{{ $item->price }}円</p>
-    <p>商品説明：{{ $item->description }}</p>
-    <p>
-        @if ($item->seller_id == Auth::id())
+
+    @if ($item->seller_id == Auth::id())
+        <p class="option">
             <a href="{{ route('item.edit', $item) }}">編集する</a>
             |
             <a href="" onclick="deleteitem()">削除する</a>
-            <form action="{{ route('item.destroy', $item->id) }}" method="post" id="delete-form">
-                @csrf
-            </form>
-            <script type="text/javascript">
-                function deleteitem() {
-                    event.preventDefault();
-                    if (window.confirm('本当に削除しますか？')) {
-                        document.getElementById('delete-form').submit();
-                    }
+        <form action="{{ route('item.destroy', $item->id) }}" method="post" id="delete-form">
+            @csrf
+        </form>
+        <script type="text/javascript">
+            function deleteitem() {
+                event.preventDefault();
+                if (window.confirm('本当に削除しますか？')) {
+                    document.getElementById('delete-form').submit();
                 }
-            </script>
-        @else
+            }
+        </script>
+        </p>
+    @else
+        <p class="option">
             @if (Auth::user()->isLike($item->id))
                 <form action="{{ route('likes.destroy') }}" method="post">
                     @csrf
                     @method('delete')
+                    <img src="image.svg" alt="">
                     <input type="hidden" name="item_id" value="{{ $item->id }}">
                     <button type="submit">いいね解除</button>
                 </form>
@@ -47,9 +71,9 @@
                 </form>
             @endif
             @if (!isset($item->buyer_id))
-            <a href="{{ route('show.buy.form', $item) }}">購入する</a>
+                <a href="{{ route('show.buy.form', $item) }}">購入する</a>
             @endif
-        @endif
-    </p>
+        </p>
+    @endif
 
 @endsection

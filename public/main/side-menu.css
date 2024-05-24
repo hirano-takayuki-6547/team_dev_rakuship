@@ -165,6 +165,8 @@ button:hover {
 }
 
 
+/* いいね！購入、出品一覧 start */
+
 .card {
     background-color: #fff;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.16);
@@ -172,12 +174,13 @@ button:hover {
     text-decoration: none;
     width: 300px;
     box-shadow: #333;
-    /* margin: 0 auto;  */
+    margin-left: 30px;
 }
 
 .card:hover {
     background: #dddddd;
     transition: all 0.3s;
+    transform: translateY(-5px);
 }
 
 .card__header {
@@ -224,3 +227,4 @@ button:hover {
     padding: 1rem;
     border-top: 1px solid #ddd;
 }
+
