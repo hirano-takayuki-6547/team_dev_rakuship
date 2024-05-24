@@ -23,25 +23,26 @@
                         @endif
 
         </div>
-
-       <div class="show-item">
-         <div class="item-detail">
-            <span class="item-label">商品名</span>
-            <span class="item-value">{{ $item->name }}</span>
-         </div>
-         <div class="item-detail">
-            <span class="item-label">カテゴリ</span>
-            <span class="item-value">{{ $item->category->name }}</span>
-         </div>
-         <div class="item-detail">
-            <span class="item-label">価格</span>
-            <span class="item-value">{{ $item->price }}</span>
-         </div>
-         <div class="item-detail">
-            <span class="item-label">商品説明</span>
-            <span class="item-value">{{ $item->description }}</span>
-         </div>
-       </div>
+        <div class="show-item">
+            <table class="show-item-table">
+                <tr class="item-name">
+                    <th>商品名：</th>
+                    <td>{{ $item->item_name }}</td>
+                </tr>
+                <tr class="item-category">
+                    <th>カテゴリ：</th>
+                    <td>{{ $item->category->name }}</td>
+                </tr>
+                <tr class="item-price">
+                    <th>価格：</th>
+                    <td>{{ $item->price }}</td>
+                </tr>
+                <tr class="item-name">
+                    <th>商品説明：</th>
+                    <td>{{ $item->description }}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     @if ($item->seller_id == Auth::id())
