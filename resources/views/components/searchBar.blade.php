@@ -4,7 +4,7 @@
             @csrf
             <label for="itemCheckbox" class="check-box">
                 <span>
-                    <input type="checkbox" id="itemCheckbox" class="check-box-input" aria-checked="false" aria-disabled="false">
+                    <input type="checkbox" id="itemCheckbox" class="check-box-input" aria-checked="false" aria-disabled="false" name="status">
                         販売中のみ表示
                 </span>
             </label>
