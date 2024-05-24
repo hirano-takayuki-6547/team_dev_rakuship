@@ -26,7 +26,7 @@
 
                 <dt>商品名
                 <dt>
-                    <input type="text" name="item_name" value="{{ old('item_ame') }}">
+                    <input type="text" name="item_name" value="{{ old('item_ame') }}" placeholder="商品名を入力してください。">
 
                 <dt>カテゴリー</dt>
                 <dd>
@@ -46,10 +46,10 @@
                     </select>
                 </dd>
 
-                <dt>値段</dt>
-                <input type="number" name="price" value="{{ old('price') }}">
+                <dt>商品価格</dt>
+                <input type="number" name="price" value="{{ old('price') }}" placeholder="価格を入力してください。">
                 <dt>商品説明</dt>
-                <textarea name="description" rows="5">{{ old('description') }}</textarea>
+                <textarea name="description" rows="5" placeholder="商品の説明入力してください。">{{ old('description') }}</textarea>
             </dl>
             <button type="submit">商品を出品する</button>
         </form>
