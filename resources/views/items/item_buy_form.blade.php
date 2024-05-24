@@ -1,50 +1,40 @@
 @extends('layouts.app')
-
+@push('style')
+    <link rel="stylesheet" href="/main/item_buy_form.css">
+@endpush
 @section('content')
     <script src="https://js.pay.jp/v2/pay.js"></script>
+
     <div class="container">
-        <div class="row">
-            <div class="col-8 offset-2 bg-white">
-                <div class="row mt-3">
-                    <div class="col-8 offset-2">
-                        @if (session('message'))
-                            <div class="alert alert-{{ session('type', 'success') }}" role="alert">
-                                {{ session('message') }}
-                            </div>
-                        @endif
-                    </div>
+        <div class="container">
+            <h1>決済情報入力</h1>
+            <div class="">
+                <div id="card-form-alert" class="" role="alert" style="display: none"></div>
+                <div class="input-label">
+                    <label for="number-form">カード番号</label>
+                    <div id="number-form" class="payment-input"><!-- ここにカード番号入力フォームが生成されます --></div>
                 </div>
-                <div class="row">
-                    <div class="col-8 offset-2">
-                        <div class="card-form-alert alert alert-danger" role="alert" style="display: none"></div>
-                        <div class="form-group mt-3">
-                            <label for="number-form">カード番号</label>
-                            <div id="number-form" class="form-control"><!-- ここにカード番号入力フォームが生成されます --></div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <label for="expiry-form">有効期限</label>
-                            <div id="expiry-form" class="form-control"><!-- ここに有効期限入力フォームが生成されます --></div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <label for="expiry-form">セキュリティコード</label>
-                            <div id="cvc-form" class="form-control"><!-- ここにCVC入力フォームが生成されます --></div>
-                        </div>
-                    </div>
+                <div class="input-label">
+                    <label for="expiry-form">有効期限</label>
+                    <div id="expiry-form" class="payment-input"><!-- ここに有効期限入力フォームが生成されます --></div>
                 </div>
-
-                <div class="row mt-3 mb-3">
-                    <div class="col-8 offset-2">
-                        <button class="btn btn-secondary btn-block" onclick="onSubmit(event)">購入</button>
-                    </div>
+                <div class="input-label">
+                    <label for="expiry-form">セキュリティコード</label>
+                    <div id="cvc-form" class="payment-input"><!-- ここにCVC入力フォームが生成されます --></div>
                 </div>
-
-                <form id="buy-form" method="POST" action="{{ route('item.buy', [$item->id]) }}">
-                    @csrf
-                    <input type="hidden" id="card-token" name="card-token">
-                </form>
             </div>
         </div>
+
+        <div>
+            <button class="btn" onclick="onSubmit(event)">購入を確定する</button>
+        </div>
+
+        <form id="buy-form" method="POST" action="{{ route('item.buy', [$item->id]) }}">
+            @csrf
+            <input type="hidden" id="card-token" name="card-token">
+        </form>
     </div>
+
     <script>
         const payjp = Payjp('{{ config('payjp.public_key') }}')
 
@@ -58,7 +48,7 @@
         cvcElement.mount('#cvc-form')
 
         const onSubmit = (event) => {
-            const msgDom = document.querySelector('.card-form-alert');
+            const msgDom = document.getElementById('card-form-alert');
             msgDom.style.display = "none";
 
             payjp.createToken(numberElement).then(function(r) {
