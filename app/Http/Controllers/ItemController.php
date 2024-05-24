@@ -80,6 +80,7 @@ class ItemController extends Controller
             $request,
             [
                 'category' => 'required',
+                'condition' => 'required',
                 'item_name' => 'required',
                 'description' => 'required',
                 'price' => 'required',
