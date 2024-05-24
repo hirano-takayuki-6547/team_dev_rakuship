@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<h1 class="create-h1">商品編集</h1>
     <div class ="container-create">
         @include('commons.flash')
         <form class ="create-form" action="{{ route('item.update', $item->id) }}" method="post" enctype="multipart/form-data">
@@ -19,7 +20,18 @@
                 </dd>
                 <dt>商品名</dt>
                 <dd>
-                    <input type="text" name="item_name" value="{{ old('item_name', $item->name) }}">
+                    <input type="text" name="item_name" value="{{ old('item_name', $item->item_name) }}">
+                </dd>
+                <dt>商品状態</dt>
+                <dd>
+                    <select name="condition_id" id="">
+                        <option value="">未選択</option>
+                        @foreach ($conditions as $condition)
+                            <option value="{{ $condition->id }}"
+                                {{ $condition->id == $item->condition_id ? ' selected' : '' }}>{{ $condition->name }}
+                            </option>
+                        @endforeach
+                    </select>
                 </dd>
                 <dt>カテゴリー</dt>
                 <dd>
@@ -27,7 +39,7 @@
                         <option value="">未選択</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
-                                {{ $category->id == $item->category_id ? ' selected' : '' }}>{{ $item->category->name }}
+                                {{ $category->id == $item->category_id ? ' selected' : '' }}>{{ $category->name }}
                             </option>
                         @endforeach
                     </select>
