@@ -45,8 +45,9 @@
         </div>
     </div>
 
-    @if ($item->seller_id == Auth::id())
-        <p class="option">
+    @if (Auth::user())
+        @if ($item->seller_id == Auth::id())
+        <div class="option">
             <a href="{{ route('item.edit', $item->id) }}">編集する</a>
             |
             <a href="" onclick="deleteitem()">削除する</a>
@@ -61,9 +62,9 @@
                 }
             }
         </script>
-        </p>
-    @else
-        <p class="option">
+        </div>
+        @else
+        <div class="option">
             @if (Auth::user()->isLike($item->id))
                 <form action="{{ route('likes.destroy') }}" method="post">
                     @csrf
@@ -73,6 +74,7 @@
                     <button type="submit">いいね解除</button>
                 </form>
             @else
+            aaaa
                 <form action="{{ route('likes.store') }}" method="post">
                     @csrf
                     <input type="hidden" name="item_id" value="{{ $item->id }}">
@@ -82,7 +84,9 @@
             @if (!isset($item->buyer_id))
                 <a href="{{ route('show.buy.form', $item) }}">購入する</a>
             @endif
-        </p>
+        </div>
+        @endif
+    @else
+            <button type="submit" class=""><a href="{{ route('login') }}">いいね登録</a></button>
     @endif
-
 @endsection
