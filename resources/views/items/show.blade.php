@@ -26,7 +26,7 @@
         <div class="show-item">
             <div class="item-detail">
                 <span class="item-label">商品名</span>
-                <span class="item-value">{{ $item->name }}</span>
+                <span class="item-value">{{ $item->item_name }}</span>
             </div>
             <div class="item-detail">
                 <span class="item-label">カテゴリ</span>
