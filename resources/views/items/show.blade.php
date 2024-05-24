@@ -27,7 +27,7 @@
             <table class="show-item-table">
                 <tr class="item-name">
                     <th>商品名：</th>
-                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->item_name }}</td>
                 </tr>
                 <tr class="item-category">
                     <th>カテゴリ：</th>
@@ -46,47 +46,47 @@
     </div>
 
     @if (Auth::user())
-        @if ($item->seller_id == Auth::id())
-        <div class="option">
-            <a href="{{ route('item.edit', $item->id) }}">編集する</a>
-            |
-            <a href="" onclick="deleteitem()">削除する</a>
-        <form action="{{ route('item.destroy', $item->id) }}" method="post" id="delete-form">
-            @csrf
-        </form>
-        <script type="text/javascript">
-            function deleteitem() {
-                event.preventDefault();
-                if (window.confirm('本当に削除しますか？')) {
-                    document.getElementById('delete-form').submit();
-                }
-            }
-        </script>
-        </div>
-        @else
-        <div class="option">
-            @if (Auth::user()->isLike($item->id))
-                <form action="{{ route('likes.destroy') }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <img src="image.svg" alt="">
-                    <input type="hidden" name="item_id" value="{{ $item->id }}">
-                    <button type="submit">いいね解除</button>
-                </form>
-            @else
-            aaaa
-                <form action="{{ route('likes.store') }}" method="post">
-                    @csrf
-                    <input type="hidden" name="item_id" value="{{ $item->id }}">
-                    <button type="submit">いいね登録</button>
-                </form>
-            @endif
-            @if (!isset($item->buyer_id))
-                <a href="{{ route('show.buy.form', $item) }}">購入する</a>
-            @endif
-        </div>
-        @endif
-    @else
+          @if ($item->seller_id == Auth::id())
+          <div class="option-store-delete">
+              <a class ="store" href="{{ route('item.edit', $item->id) }}">編集する</a>
+
+              <a class ="delete" href="" onclick="deleteitem()">削除する</a>
+
+              <form action="{{ route('item.destroy', $item->id) }}" method="post" id="delete-form">
+              @csrf
+              </form>
+              <script type="text/javascript">
+                  function deleteitem() {
+                      event.preventDefault();
+                      if (window.confirm('本当に削除しますか？')) {
+                          document.getElementById('delete-form').submit();
+                      }
+                  }
+              </script>
+          </div>
+          @else
+              <div class="option-like-buy">
+              @if (Auth::user()->isLike($item->id))
+                  <form action="{{ route('likes.destroy') }}" method="post">
+                      @csrf
+                      @method('delete')
+                      <img src="image.svg" alt="">
+                      <input type="hidden" name="item_id" value="{{ $item->id }}">
+                      <button class="like-btn" type="submit">いいね解除</button>
+                  </form>
+              @else
+                  <form action="{{ route('likes.store') }}" method="post">
+                      @csrf
+                      <input type="hidden" name="item_id" value="{{ $item->id }}">
+                      <button class="like-btn" type="submit">いいね登録</button>
+                  </form>
+              @endif
+              @if (!isset($item->buyer_id))
+                  <a class ="buy-item" href="{{ route('show.buy.form', $item) }}">購入する</a>
+              @endif
+              </div>
+         @endif 
+     @else  
             <button type="submit" class=""><a href="{{ route('login') }}">いいね登録</a></button>
-    @endif
+     @endif
 @endsection
