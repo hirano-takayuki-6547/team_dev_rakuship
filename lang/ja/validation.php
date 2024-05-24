@@ -185,6 +185,8 @@ return [
         'description' => '商品説明',
         'price' => '値段',
         'img_src' => '画像登録',
+        "email" => 'メールアドレス',
+        "password" => 'パスワード',
     ],
 
 ];
