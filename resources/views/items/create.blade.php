@@ -31,6 +31,7 @@
                 <dt>カテゴリー</dt>
                 <dd>
                     <select name="category">
+                        <option value="">未選択</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
@@ -40,6 +41,7 @@
                 <dt>商品状態</dt>
                 <dd>
                     <select name="condition">
+                        <option value="">未選択</option>
                         @foreach ($conditions as $condition)
                             <option value="{{ $condition->id }}">{{ $condition->name }}</option>
                         @endforeach

@@ -181,6 +181,7 @@ return [
 
     'attributes' => [
         'category' => 'カテゴリー',
+        'condition' => '商品状態',
         'name' => 'ユーザー名',
         'item_name' => '商品名',
         'description' => '商品説明',
