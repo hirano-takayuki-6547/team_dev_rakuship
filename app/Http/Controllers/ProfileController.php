@@ -85,6 +85,17 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
+
+        $this->validate(
+            $request,
+            [
+                'profile_img' => 'nullable|image|file|mimes:png',
+                'name' => 'required',
+                'email' => 'required',
+                'description' => 'nullable',
+            ]
+        );
+
         $user->name = $request->input('name');
 
         if ($request->has('profile_img')) {

@@ -49,8 +49,8 @@ Route::prefix('items')
             ->name('item.edit');
 
         // 出品した商品更新
-        Route::post('{item}/edit', [ItemController::class, 'update'])
-            ->name('item.edit');
+        Route::patch('{item}/edit', [ItemController::class, 'update'])
+            ->name('item.update');
     });
 
 // 商品一覧と商品詳細（ログインなしで作成）

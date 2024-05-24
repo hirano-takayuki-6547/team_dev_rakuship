@@ -50,6 +50,10 @@ class ItemController extends Controller
             $query->where('name', 'LIKE', '%' . $request['keyword'][0] . '%');
         }
 
+        if ($request['status']){
+            $query->where('buyer_id', null);
+        }
+
         // Item 取得
         $items = $query->orderBy('created_at', 'desc')->paginate(18);
 
@@ -58,7 +62,9 @@ class ItemController extends Controller
         $categories = Category::orderBy('id')->get();
 
         $conditions = ItemCondition::orderBy('id')->get();
+
         return view('items.index', ['items' => $items, 'categories' => $categories, 'conditions' => $conditions]);
+       
     }
 
     public function create()
@@ -70,8 +76,6 @@ class ItemController extends Controller
     {
         $user = Auth::user();
 
-        $dir = 'item_images';
-
         $this->validate(
             $request,
             [
@@ -79,13 +83,11 @@ class ItemController extends Controller
                 'name' => 'required',
                 'description' => 'required',
                 'price' => 'required',
-                'img_src' => 'required|image|file|mimes:png,jpg',
+                'img_src' => 'required|image|file|mimes:png',
             ]
         );
 
-        $file_name = $request->file('img_src')->getClientOriginalName();
-        $file_path = $request->file('img_src')->storeAs('public/' . $dir, $file_name);
-
+        $img_src = $this->saveItemImg($request->file('img_src'));
         // 商品画像取得
 
         $item = new Item;
@@ -93,7 +95,7 @@ class ItemController extends Controller
         $item->category_id = $request->category;
         $item->condition_id = $request->condition;
         $item->name = $request->name;
-        $item->img_src = $file_name;
+        $item->img_src = $img_src;
         $item->description = $request->description;
         $item->price = $request->price;
 
@@ -188,6 +190,7 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
+        $conditions = ItemCondition::all();
         $categories = Category::all();
 
         return view(
@@ -195,27 +198,31 @@ class ItemController extends Controller
             [
                 'item' => $item,
                 'categories' => $categories,
+                'conditions' => $conditions,
             ]
         );
     }
 
     public function update(Request $request, Item $item)
     {
-        $this->authorize($item);
-        // varidate(storeと同じにしてます)
         $this->validate(
             $request,
             [
                 'category_id' => 'required',
                 'name' => 'required|max:255',
-                'img_src' => 'required|image|file|',
                 'description' => 'required',
                 'price' => 'required|min:1',
             ]
         );
 
+        if ($request->has('img_src')) {
+            $filename = $this->saveItemImg($request->file('img_src'));
+            $item->img_src = $filename;
+        }
+
         $item->update($request->all());
-        return redirect(route('items.show', ['item' => $item]));
+        return redirect(route('items.show', ['item' => $item]))
+            ->with('status', '商品を編集しました');
     }
 
     public function destroy(Item $item)
@@ -236,12 +243,6 @@ class ItemController extends Controller
     private function saveItemImg(UploadedFile $file)
     {
         $tempPath = $this->makeTempPath();
-
-        $errors = [];
-
-        $fileType = [
-            'image/png',
-        ];
 
         ImageManager::imagick()->read($file)->cover(200, 200)->save($tempPath);
 

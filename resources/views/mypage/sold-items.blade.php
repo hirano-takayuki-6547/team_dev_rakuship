@@ -1,13 +1,12 @@
 @extends('layouts.side')
 
+@section('title', '出品商品一覧')
 @section('content-mypage')
-
-@section('title', '購入商品一覧')
-
 <div class="row">
     <div class="grid-wrapper">
 
     @foreach ($items as $item)
+
     <article class="card">
         <a href="{{ route('items.show', $item->id) }}" style="text-decoration: none; color: #000000;">
             <div class="card__header">

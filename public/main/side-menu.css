@@ -164,6 +164,7 @@ button:hover {
     background-color: #333;
 }
 
+
 /* いいね！購入、出品一覧 start */
 
 .grid-wrapper {
@@ -183,7 +184,6 @@ button:hover {
     width: 20vw;
     box-shadow: #333;
     margin-left: 2vw;
-    /* margin: 0 auto;  */
 }
 
 .card:hover {
@@ -240,4 +240,3 @@ button:hover {
     border-top: 1px solid #ddd;
 }
 
-/* いいね！購入、出品一覧 end */
