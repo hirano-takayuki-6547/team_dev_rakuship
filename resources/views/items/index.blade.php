@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-@if (session('status'))
-    <div>
-        <span style="color: 2f2b32; background-color: #fad7da; border-radius: 8px; padding: 4px 8px;">
-            {{ session('status') }}
-        </span>
-    </div>
-@endif
+    @if (session('status'))
+        <div>
+            <span style="color: 2f2b32; background-color: #fad7da; border-radius: 8px; padding: 4px 8px;">
+                {{ session('status') }}
+            </span>
+        </div>
+    @endif
     <div class="grid-wrapper">
 
         @foreach ($items as $item)
@@ -23,7 +23,7 @@
                                 <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像" class="card__image">
                             </figure>
                         @endif
-                        <h2 class="card__title">{{ $item->name }}</h2>
+                        <h2 class="card__title">{{ $item->item_name }}</h2>
                     </div>
                 </a>
             </article>

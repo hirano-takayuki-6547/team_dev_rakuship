@@ -21,13 +21,24 @@
                 <dd>
                     <input type="text" name="item_name" value="{{ old('item_name', $item->name) }}">
                 </dd>
+                <dt>商品状態</dt>
+                <dd>
+                    <select name="condition_id" id="">
+                        <option value="">未選択</option>
+                        @foreach ($conditions as $condition)
+                            <option value="{{ $condition->id }}"
+                                {{ $condition->id == $item->condition_id ? ' selected' : '' }}>{{ $condition->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </dd>
                 <dt>カテゴリー</dt>
                 <dd>
                     <select name="category_id" id="">
                         <option value="">未選択</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
-                                {{ $category->id == $item->category_id ? ' selected' : '' }}>{{ $item->category->name }}
+                                {{ $category->id == $item->category_id ? ' selected' : '' }}>{{ $category->name }}
                             </option>
                         @endforeach
                     </select>
