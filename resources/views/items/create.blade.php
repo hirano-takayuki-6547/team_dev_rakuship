@@ -17,7 +17,7 @@
                 <dt>商品画像</dt>
                 <span class="image-picker">
                     <input type="file" id="img_src" name="img_src" style="display: none;"
-                        accept="image/png,image/jpeg"><br>
+                        accept="image/png"><br>
                     <label for="img_src">
                         <img src="/main/images/dummy-item.png" alt=""
                             style="object-fit; cover; width: 300px; height: 300px; cursor: pointer;">

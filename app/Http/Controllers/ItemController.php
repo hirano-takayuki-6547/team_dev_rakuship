@@ -76,8 +76,6 @@ class ItemController extends Controller
     {
         $user = Auth::user();
 
-        $dir = 'item_images';
-
         $this->validate(
             $request,
             [
@@ -85,13 +83,11 @@ class ItemController extends Controller
                 'name' => 'required',
                 'description' => 'required',
                 'price' => 'required',
-                'img_src' => 'required|image|file|mimes:png,jpg',
+                'img_src' => 'required|image|file|mimes:png',
             ]
         );
 
-        $file_name = $request->file('img_src')->getClientOriginalName();
-        $file_path = $request->file('img_src')->storeAs('public/' . $dir, $file_name);
-
+        $img_src = $this->saveItemImg($request->file('img_src'));
         // 商品画像取得
 
         $item = new Item;
@@ -99,7 +95,7 @@ class ItemController extends Controller
         $item->category_id = $request->category;
         $item->condition_id = $request->condition;
         $item->name = $request->name;
-        $item->img_src = $file_name;
+        $item->img_src = $img_src;
         $item->description = $request->description;
         $item->price = $request->price;
 
@@ -242,12 +238,6 @@ class ItemController extends Controller
     private function saveItemImg(UploadedFile $file)
     {
         $tempPath = $this->makeTempPath();
-
-        $errors = [];
-
-        $fileType = [
-            'image/png',
-        ];
 
         ImageManager::imagick()->read($file)->cover(200, 200)->save($tempPath);
 
