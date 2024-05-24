@@ -188,6 +188,7 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
+        $conditions = ItemCondition::all();
         $categories = Category::all();
 
         return view(
@@ -195,27 +196,31 @@ class ItemController extends Controller
             [
                 'item' => $item,
                 'categories' => $categories,
+                'conditions' => $conditions,
             ]
         );
     }
 
     public function update(Request $request, Item $item)
     {
-        $this->authorize($item);
-        // varidate(storeと同じにしてます)
         $this->validate(
             $request,
             [
                 'category_id' => 'required',
                 'name' => 'required|max:255',
-                'img_src' => 'required|image|file|',
                 'description' => 'required',
                 'price' => 'required|min:1',
             ]
         );
 
+        if ($request->has('img_src')) {
+            $filename = $this->saveItemImg($request->file('img_src'));
+            $item->img_src = $filename;
+        }
+
         $item->update($request->all());
-        return redirect(route('items.show', ['item' => $item]));
+        return redirect(route('items.show', ['item' => $item]))
+            ->with('status', '商品を編集しました');
     }
 
     public function destroy(Item $item)
@@ -236,12 +241,6 @@ class ItemController extends Controller
     private function saveItemImg(UploadedFile $file)
     {
         $tempPath = $this->makeTempPath();
-
-        $errors = [];
-
-        $fileType = [
-            'image/png',
-        ];
 
         ImageManager::imagick()->read($file)->cover(200, 200)->save($tempPath);
 

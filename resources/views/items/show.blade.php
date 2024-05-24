@@ -38,7 +38,7 @@
 
     @if ($item->seller_id == Auth::id())
         <p class="option">
-            <a href="{{ route('item.edit', $item) }}">編集する</a>
+            <a href="{{ route('item.edit', $item->id) }}">編集する</a>
             |
             <a href="" onclick="deleteitem()">削除する</a>
         <form action="{{ route('item.destroy', $item->id) }}" method="post" id="delete-form">
