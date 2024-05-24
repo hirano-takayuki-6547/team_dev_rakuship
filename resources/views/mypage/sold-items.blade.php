@@ -13,7 +13,7 @@
                 <figure class="card__thumbnail">
                     <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像" class="card__image">
                 </figure>
-                <h2 class="card__title">{{ $item->name }}</h2>
+                <h2 class="card__title">{{ $item->item_name }}</h2>
             </div>
         </a>
     </article>
