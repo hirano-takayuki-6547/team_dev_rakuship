@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/main/layout.css">
     <script src="https://kit.fontawesome.com/1d8e0db496.js" crossorigin="anonymous"></script>
+    @stack('style')
     @vite(['resources/js/app.js'])
     <title>{{ config('app.name') }}</title>
 </head>
