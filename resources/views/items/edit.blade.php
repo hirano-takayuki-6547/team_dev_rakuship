@@ -1,44 +1,51 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class ="container-create">
+        @include('commons.flash')
+        <form class ="create-form" action="{{ route('item.update', $item->id) }}" method="post" enctype="multipart/form-data">
+            @csrf
+            @method('patch')
+            <dl>
+                <dt>商品画像</dt>
+                <dd>
+                    <span class="image-picker">
+                        <input type="file" id="img_src" name="img_src" style="display: none;"
+                            accept="image/png,image/jpeg"><br>
+                        <label for="img_src">
+                            <img src="/storage/item_images/{{ $item->img_src }}" alt="" style="object-fit: cover; width: 300px; height: 300px;">
+                        </label>
+                    </span>
+                </dd>
+                <dt>商品名</dt>
+                <dd>
+                    <input type="text" name="item_name" value="{{ old('item_name', $item->name) }}">
+                </dd>
+                <dt>カテゴリー</dt>
+                <dd>
+                    <select name="category_id" id="">
+                        <option value="">未選択</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}"
+                                {{ $category->id == $item->category_id ? ' selected' : '' }}>{{ $item->category->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </dd>
 
-<div class ="container-create">
-    <form class ="create-form" action="{{ route('items.update', $item->id) }}" method="post" novalidate>
-    @method('patch')
-        <dl>
-            <dt>カテゴリー</dt>
-            <dd>
-                <select name="category_id" id="">
-                   <option value="">未選択</option>
-                   @foreach ($categories as $category)
-                        <option value="$category->id" {{ $category->id == $item->category_id ? " selected" : "" }}>{{ $item->category->name }}</option>
-                    @endforeach
-                </select>
-            </dd>
 
-            <dt>商品名</dt>
-            <dd>
-                <input type="text" name="name" value="{{ $item->name }}">
-            </dd>
 
-            <dt>商品画像</dt>
-            <dd>
-                <!-- 商品画像の更新わかりません -->
-                <img src="" alt="">
-            </dd>
+                <dt>商品説明</dt>
+                <dd>
+                    <textarea name="description" id="">{{ old('description', $item->description) }}</textarea>
+                </dd>
 
-            <dt>商品説明</dt>
-            <dd>
-                <textarea name="description" id="">{{ $item->description }}</textarea>
-            </dd>
-
-            <dt>商品価格</dt>
-            <dd>
-                <input type="number" name="price" value="{{ $item->price }}">円
-            </dd>
-        </dl>
-        <button type="submit">更新する</button>
-    </form>
-</div>
-
+                <dt>商品価格</dt>
+                <dd>
+                    <input type="number" name="price" value="{{ old('price', $item->price) }}">円
+                </dd>
+            </dl>
+            <button type="submit">更新する</button>
+        </form>
+    </div>
 @endsection

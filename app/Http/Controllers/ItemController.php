@@ -64,7 +64,7 @@ class ItemController extends Controller
         $conditions = ItemCondition::orderBy('id')->get();
 
         return view('items.index', ['items' => $items, 'categories' => $categories, 'conditions' => $conditions]);
-       
+
     }
 
     public function create()
@@ -80,7 +80,7 @@ class ItemController extends Controller
             $request,
             [
                 'category' => 'required',
-                'name' => 'required',
+                'item_name' => 'required',
                 'description' => 'required',
                 'price' => 'required',
                 'img_src' => 'required|image|file|mimes:png',
@@ -190,6 +190,7 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
+        $conditions = ItemCondition::all();
         $categories = Category::all();
 
         return view(
@@ -197,27 +198,31 @@ class ItemController extends Controller
             [
                 'item' => $item,
                 'categories' => $categories,
+                'conditions' => $conditions,
             ]
         );
     }
 
     public function update(Request $request, Item $item)
     {
-        $this->authorize($item);
-        // varidate(storeと同じにしてます)
         $this->validate(
             $request,
             [
                 'category_id' => 'required',
-                'name' => 'required|max:255',
-                'img_src' => 'required|image|file|',
+                'item_name' => 'required|max:255',
                 'description' => 'required',
                 'price' => 'required|min:1',
             ]
         );
 
+        if ($request->has('img_src')) {
+            $filename = $this->saveItemImg($request->file('img_src'));
+            $item->img_src = $filename;
+        }
+
         $item->update($request->all());
-        return redirect(route('items.show', ['item' => $item]));
+        return redirect(route('items.show', ['item' => $item]))
+            ->with('status', '商品を編集しました');
     }
 
     public function destroy(Item $item)
