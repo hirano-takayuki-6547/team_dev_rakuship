@@ -2,7 +2,6 @@
 
 @section('content')
     <h1 class="create-h1">商品出品</h1>
-    @include('commons.flash')
     @if (session('status'))
         <div>
             <span style="color: 2f2b32; background-color: #d1e7dd; border-radius: 8px; padding: 4px 8px;">
