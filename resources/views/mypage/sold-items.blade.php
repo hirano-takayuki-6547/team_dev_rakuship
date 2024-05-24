@@ -1,10 +1,10 @@
 @extends('layouts.side')
 
-@section('content-mypage')
-@section('title', '購入商品一覧')
 
+@section('title', '出品商品一覧')
+@section('content-mypage')
 <div class="row">
-    @foreach ($items as $item)
+@foreach ($items as $item)
     <article class="card">
         <a href="{{ route('items.show', $item->id) }}" style="text-decoration: none; color: #000000;">
             <div class="card__header">
@@ -15,7 +15,6 @@
             </div>
         </a>
     </article>
-
 @endforeach
 </div>
 @endsection

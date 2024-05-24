@@ -84,6 +84,8 @@ body {
 
 .row {
     display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
     justify-content: space-between;
 }
 
@@ -162,6 +164,7 @@ button:hover {
     background-color: #333;
 }
 
+
 /* いいね！購入、出品一覧 start */
 
 .card {
@@ -172,7 +175,6 @@ button:hover {
     width: 300px;
     box-shadow: #333;
     margin-left: 30px;
-    /* margin: 0 auto;  */
 }
 
 .card:hover {
@@ -226,4 +228,3 @@ button:hover {
     border-top: 1px solid #ddd;
 }
 
-/* いいね！購入、出品一覧 end */
