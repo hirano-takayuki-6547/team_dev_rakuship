@@ -94,7 +94,7 @@ class ItemController extends Controller
         $item->seller_id = $user->id;
         $item->category_id = $request->category;
         $item->condition_id = $request->condition;
-        $item->name = $request->name;
+        $item->item_name = $request->item_name;
         $item->img_src = $img_src;
         $item->description = $request->description;
         $item->price = $request->price;
