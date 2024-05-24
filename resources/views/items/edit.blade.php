@@ -2,6 +2,7 @@
 
 @section('content')
     <div class ="container-create">
+        @include('commons.flash')
         <form class ="create-form" action="{{ route('item.update', $item->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
@@ -18,7 +19,7 @@
                 </dd>
                 <dt>商品名</dt>
                 <dd>
-                    <input type="text" name="name" value="{{ old('name', $item->name) }}">
+                    <input type="text" name="item_name" value="{{ old('item_name', $item->name) }}">
                 </dd>
                 <dt>カテゴリー</dt>
                 <dd>
