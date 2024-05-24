@@ -47,7 +47,7 @@ class ItemController extends Controller
         }
 
         if ($request['keyword']) {
-            $query->where('name', 'LIKE', '%' . $request['keyword'][0] . '%');
+            $query->where('item_name', 'LIKE', '%' . $request['keyword'][0] . '%');
         }
 
         if ($request['status']){
