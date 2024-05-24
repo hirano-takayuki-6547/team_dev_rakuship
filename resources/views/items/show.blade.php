@@ -10,9 +10,18 @@
     @endif
     <div class="show-item-container">
         <div class="item-img-src">
-            <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像"
-                style="object-fit: cover; width
-            300px; height: 300px;">
+            @if (isset($item->buyer_id))
+                        <figure class="card__thumbnail sold__tag">
+                            <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像"
+                            style="object-fit: cover; width300px; height: 300px;">
+                        </figure>
+                        @else
+                        <figure class="card__thumbnail">
+                            <img src="/storage/item_images/{{ $item->img_src }}" alt="商品画像"
+                            style="object-fit: cover; width300px; height: 300px;">
+                        </figure>
+                        @endif
+
         </div>
         <div class="show-item">
             <table class="show-item-table">
