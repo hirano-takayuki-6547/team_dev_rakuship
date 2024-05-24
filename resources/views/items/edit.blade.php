@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<h1 class="create-h1">商品編集</h1>
     <div class ="container-create">
         @include('commons.flash')
         <form class ="create-form" action="{{ route('item.update', $item->id) }}" method="post" enctype="multipart/form-data">

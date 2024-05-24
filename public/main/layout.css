@@ -92,6 +92,17 @@ body {
     border-radius: 10px;
 }
 
+.check-box{
+    margin-right: 10px;
+    padding: 7px 8px;
+    margin-top: 3px;
+    border-radius: 5px;
+}
+
+.check-box:hover{
+    background-color: #ded9ca9d;
+}
+
 .category {
     margin-right: 7px;
     border-radius: 5px;
@@ -266,7 +277,7 @@ body {
 .create-h1 {
     margin-left: 200px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
 }
 
 .container-create {
