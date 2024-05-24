@@ -85,8 +85,13 @@
                   <a class ="buy-item" href="{{ route('show.buy.form', $item) }}">購入する</a>
               @endif
               </div>
-         @endif 
-     @else  
-            <button type="submit" class=""><a href="{{ route('login') }}">いいね登録</a></button>
+         @endif
+     @else
+        <div class="option-like-buy">
+            <form action="" method="post" novalidate>
+                @csrf
+                <button type="submit" class="like-btn">いいね登録</button>
+            </form>
+            </div>
      @endif
 @endsection
