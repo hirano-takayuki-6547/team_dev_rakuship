@@ -26,14 +26,14 @@
 
                 <dt>商品名
                 <dt>
-                    <input type="text" name="item_name" value="{{ old('item_ame') }}" placeholder="商品名を入力してください。">
+                    <input type="text" name="item_name" value="{{ old('item_name') }}" placeholder="商品名を入力してください。">
 
                 <dt>カテゴリー</dt>
                 <dd>
                     <select name="category">
                         <option value="">未選択</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" {{ old('category') == $category->id ? " selected" : "" }}>{{ $category->name }}</option>
                         @endforeach
                     </select>
                 </dd>
@@ -43,7 +43,7 @@
                     <select name="condition">
                         <option value="">未選択</option>
                         @foreach ($conditions as $condition)
-                            <option value="{{ $condition->id }}">{{ $condition->name }}</option>
+                            <option value="{{ $condition->id }}" {{ old('condition') == $condition->id ? " selected" : "" }}>{{ $condition->name }}</option>
                         @endforeach
                     </select>
                 </dd>
