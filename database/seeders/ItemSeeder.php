@@ -16,9 +16,6 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
-        // $item = [
-
-        //     ];
         Item::factory()->count(10)->create();
     }
 }

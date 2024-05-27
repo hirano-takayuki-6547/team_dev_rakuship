@@ -17,7 +17,7 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            'seller_id' => 1,
+            'seller_id' => rand(1, 10),
             'category_id' => rand(1, 10),
             'img_src' => $this->faker->image(storage_path('app/public/item_images'), 300, 300, 'png', false),
             'condition_id' => rand(1, 6),
