@@ -81,9 +81,9 @@ class ItemController extends Controller
             [
                 'category' => 'required',
                 'condition' => 'required',
-                'item_name' => 'required',
-                'description' => 'required',
-                'price' => 'required',
+                'item_name' => 'required|string|max:255',
+                'description' => 'required|string|max:10000',
+                'price' => 'required|integer|min:1|max:9999999',
                 'img_src' => 'required|image|file|mimes:png',
             ]
         );
