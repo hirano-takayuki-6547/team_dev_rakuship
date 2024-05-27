@@ -12,13 +12,13 @@ class LikeController extends Controller
     public function store(Request $request)
     {
         Auth::user()->likedItems()->attach($request->item_id);
-        return back();
+        return back()->with('message', 'いいね登録しました');
     }
 
     // いいね解除
     public function destroy(Request $request)
     {
         Auth::user()->likedItems()->detach($request->item_id);
-        return back();
+        return back()->with('message', 'いいね解除しました');
     }
 }
