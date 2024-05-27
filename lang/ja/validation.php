@@ -190,7 +190,7 @@ return [
         "email" => 'メールアドレス',
         "password" => 'パスワード',
         'category_id' => 'カテゴリー',
-        'condition id' => '商品状態',
+        'condition_id' => '商品状態',
     ],
 
 ];
