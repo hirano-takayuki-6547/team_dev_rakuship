@@ -189,6 +189,8 @@ return [
         'img_src' => '画像登録',
         "email" => 'メールアドレス',
         "password" => 'パスワード',
+        'category_id' => 'カテゴリー',
+        'condition id' => '商品状態',
     ],
 
 ];
