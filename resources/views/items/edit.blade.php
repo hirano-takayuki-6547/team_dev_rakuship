@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="create-h1">商品編集</h1>
+    @if (session('message'))
+        <div>
+            <span
+                style="color: 2f2b32; background-color: #d1e7dd; border-radius: 8px; padding: 4px 8px;">{{ session('message') }}
+            </span>
+        </div>
+    @endif
+    <h1 class="create-h1">商品編集</h1>
     <div class ="container-create">
         @include('commons.flash')
         <form class ="create-form" action="{{ route('item.update', $item->id) }}" method="post" enctype="multipart/form-data">
@@ -14,13 +21,15 @@
                         <input type="file" id="img_src" name="img_src" style="display: none;"
                             accept="image/png,image/jpeg"><br>
                         <label for="img_src">
-                            <img src="/storage/item_images/{{ $item->img_src }}" alt="" style="object-fit: cover; width: 300px; height: 300px; cursor: pointer;">
+                            <img src="/storage/item_images/{{ $item->img_src }}" alt=""
+                                style="object-fit: cover; width: 300px; height: 300px; cursor: pointer;">
                         </label>
                     </span>
                 </dd>
                 <dt>商品名</dt>
                 <dd>
-                    <input type="text" name="item_name" value="{{ old('item_name', $item->item_name) }}" placeholder="商品名を入力してください。">
+                    <input type="text" name="item_name" value="{{ old('item_name', $item->item_name) }}"
+                        placeholder="商品名を入力してください。">
                 </dd>
                 <dt>商品状態</dt>
                 <dd>
@@ -54,7 +63,8 @@
 
                 <dt>商品価格</dt>
                 <dd>
-                    <input type="number" name="price" value="{{ old('price', $item->price) }}" placeholder="価格を入力してください。">
+                    <input type="number" name="price" value="{{ old('price', $item->price) }}"
+                        placeholder="価格を入力してください。">
                 </dd>
             </dl>
             <button type="submit">更新する</button>
