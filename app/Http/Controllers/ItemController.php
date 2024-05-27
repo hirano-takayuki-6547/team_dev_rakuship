@@ -83,7 +83,7 @@ class ItemController extends Controller
                 'condition' => 'required',
                 'item_name' => 'required|string|max:255',
                 'description' => 'required|string|max:10000',
-                'price' => 'required|integer|min:1|max:9999999',
+                'price' => 'required|integer|min:1|max:999999',
                 'img_src' => 'required|image|file|mimes:png',
             ]
         );
@@ -211,9 +211,9 @@ class ItemController extends Controller
             [
                 'category_id' => 'required',
                 'condition_id' => 'required',
-                'item_name' => 'required|max:255',
-                'description' => 'required',
-                'price' => 'required|min:1',
+                'item_name' => 'required|string|max:255',
+                'description' => 'required|string|max:10000',
+                'price' => 'required|min:1|max:999999',
             ]
         );
 
