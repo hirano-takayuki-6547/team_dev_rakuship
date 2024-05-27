@@ -201,7 +201,7 @@ class ItemController extends Controller
                 'categories' => $categories,
                 'conditions' => $conditions,
             ]
-        );
+        )->with('message', '商品を編集しました');
     }
 
     public function update(Request $request, Item $item)
