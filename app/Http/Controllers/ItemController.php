@@ -222,7 +222,6 @@ class ItemController extends Controller
             $item->img_src = $filename;
         }
 
-        // $item->update($request->all());
         $item->item_name = $request->input('item_name');
         $item->category_id = $request->input('category_id');
         $item->condition_id = $request->input('condition_id');
@@ -232,7 +231,7 @@ class ItemController extends Controller
         $item->save();
 
         return redirect(route('items.show', ['item' => $item]))
-            ->with('status', '商品を編集しました');
+            ->with('message', '商品を編集しました');
     }
 
     public function destroy(Item $item)
