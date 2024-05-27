@@ -14,7 +14,7 @@
                         <input type="file" id="img_src" name="img_src" style="display: none;"
                             accept="image/png,image/jpeg"><br>
                         <label for="img_src">
-                            <img src="/storage/item_images/{{ $item->img_src }}" alt="" style="object-fit: cover; width: 300px; height: 300px;">
+                            <img src="/storage/item_images/{{ $item->img_src }}" alt="" style="object-fit: cover; width: 300px; height: 300px; cursor: pointer;">
                         </label>
                     </span>
                 </dd>
