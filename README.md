@@ -58,6 +58,10 @@ Rakushipは、忙しい人や物を断捨離したい人向けのフリマアプ
 
 <!-- Treeコマンドを使ってディレクトリ構成を記載 -->
 
+```
+tree
+```
+
 treeコマンドで確認してください。
 
 
@@ -83,7 +87,13 @@ composer install
 を実行。
 
 ### 動作確認
-xampp上でapacheが起動していることを確認後、php artisan serveを実行。
+xampp上でapacheとMySQLが起動していることを確認後、
+
+```
+php artisan serve
+```
+
+を実行。
 http://127.0.0.1:8000 にアクセスできるか確認
 アクセスできたら成功
 
