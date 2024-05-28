@@ -93,6 +93,10 @@ xampp上でapacheとMySQLが起動していることを確認後、
 php artisan serve
 ```
 
+```
+npm run dev
+```
+
 を実行。
 http://127.0.0.1:8000 にアクセスできるか確認
 アクセスできたら成功
