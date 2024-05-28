@@ -1,3 +1,5 @@
+<img src="public/main/images/logo.png" alt="logo">
+
 ## 使用技術一覧
 
 <!-- シールド一覧 -->
