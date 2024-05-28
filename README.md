@@ -1,7 +1,6 @@
 ## 使用技術一覧
 
 <!-- シールド一覧 -->
-<!-- 該当するプロジェクトの中から任意のものを選ぶ-->
 <p style="display: inline">
   <!-- バックエンドのフレームワーク一覧 -->
   <img src="https://img.shields.io/badge/-Laravel-ffffff.svg?logo=Laravel&style=for-the-badge">
