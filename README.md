@@ -9,7 +9,7 @@
   <!-- ミドルウェア一覧 -->
   <img src="https://img.shields.io/badge/-Apache-D22128.svg?logo=apache&style=for-the-badge">
   <img src="https://img.shields.io/badge/-MySQL-4479A1.svg?logo=mysql&style=for-the-badge&logoColor=white">
-  
+  <img src="https://img.shields.io/badge/-xampp-ffffff.svg?logo=xampp&style=for-the-badge">
 </p>
 
 ## 目次
