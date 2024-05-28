@@ -50,7 +50,7 @@ class ItemController extends Controller
             $query->where('item_name', 'LIKE', '%' . $request['keyword'][0] . '%');
         }
 
-        if ($request['status']){
+        if ($request['status']) {
             $query->where('buyer_id', null);
         }
 
@@ -64,7 +64,6 @@ class ItemController extends Controller
         $conditions = ItemCondition::orderBy('id')->get();
 
         return view('items.index', ['items' => $items, 'categories' => $categories, 'conditions' => $conditions]);
-
     }
 
     public function create()
@@ -213,7 +212,7 @@ class ItemController extends Controller
                 'condition_id' => 'required',
                 'item_name' => 'required|string|max:255',
                 'description' => 'required|string|max:10000',
-                'price' => 'required|min:1|max:999999',
+                'price' => 'required|integer|min:1|max:999999',
             ]
         );
 
